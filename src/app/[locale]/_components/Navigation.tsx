@@ -7,6 +7,7 @@ import AutocompleteSearch from './functions/Autocomplete'
 import LanguageSwitcher from './functions/LanguageSwitcher'
 import Drawers from './tools/Drawers'
 import { SiWhatsapp } from '@icons-pack/react-simple-icons'
+import Image from 'next/image'
 
 const navigation = [
     { name: 'Communities', href: '#' },
@@ -42,14 +43,18 @@ export default function Navigation() {
                 <div className="flex lg:flex-1">
                 <a href="#" className="-m-1.5 p-1.5">
                     <span className="sr-only">elbayt.com</span>
-                    <img
+                    <Image
                     alt=""
                     src="/elbayt-name-only.png"
                     className="h-8 w-auto dark:hidden"
+                    width={200}
+                    height={200}
                     />
-                    <img
+                    <Image
                     alt=""
                     src="/elbayt-name-only.png"
+                    width={200}
+                    height={200}
                     className="h-8 w-auto not-dark:hidden"
                     />
                 </a>
@@ -105,15 +110,19 @@ export default function Navigation() {
                 <div className="flex items-center justify-between">
                     <a href="#" className="-m-1.5 p-1.5">
                     <span className="sr-only">elbayt.com</span>
-                    <img
+                    <Image
                         alt=""
                         src="/elbayt-name-only.png"
                         className="h-8 w-auto dark:hidden"
+                        width={200}
+                        height={200}
                     />
-                    <img
+                    <Image
                         alt=""
                         src="/elbayt-name-only.png"
                         className="h-8 w-auto not-dark:hidden"
+                        width={200}
+                        height={200}
                     />
                     </a>
                     <button
