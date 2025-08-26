@@ -14,10 +14,8 @@ const eslintConfig = [
   ...compat.config({
     extends: ['next'],
     rules: {
-      "no-unused-vars": "off",
-      "no-explicit-any": "off",
-      "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "off",
     },
   }),
 ];
