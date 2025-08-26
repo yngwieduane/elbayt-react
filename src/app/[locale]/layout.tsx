@@ -7,7 +7,7 @@ import Footer from './_components/Footer';
 import "../globals.css";
  
 export const metadata: Metadata = {
-  title: "Best Real Estate Website in Egypt | elbayt.com<",
+  title: "Best Real Estate Website in Egypt | elbayt.com",
   description: "Find your next residential or commercial property with Egypt’s largest real estate website elbayt.com . Our complete database of real estate listings will make finding your next place easy! | elbayt.com",
 };
 

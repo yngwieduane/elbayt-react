@@ -36,7 +36,7 @@ export default function Navigation() {
         setShowDrawer(true);
     }
 
-  return (
+    return (
         <header className="bg-white">
             <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
                 <div className="flex lg:flex-1">
