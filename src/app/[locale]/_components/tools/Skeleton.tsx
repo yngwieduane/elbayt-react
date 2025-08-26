@@ -1,5 +1,3 @@
-
-
 const Skeleton = (props:any) => (
     <>
         <div className="group animate-pulse">
