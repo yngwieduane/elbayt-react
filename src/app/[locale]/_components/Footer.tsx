@@ -2,6 +2,7 @@
 
 import { Link } from '@/i18n/navigation';
 import { SiFacebook, SiInstagram, SiX, SiYoutube } from '@icons-pack/react-simple-icons';
+import Image from 'next/image';
 
 export default function Footer() {
 return (
@@ -25,7 +26,9 @@ return (
                     </div>
                     <p className="text-sm">All Rights Reserved.</p>
                     <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
-                        <img
+                        <Image
+                        width={200}
+                        height={200}
                         src="/Google_Play_Store_badge_EN.svg"
                         alt="Get it on Google Play"
                         className="h-12 mt-2"

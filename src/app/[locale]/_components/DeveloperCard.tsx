@@ -2,9 +2,10 @@
 import { useState, useEffect } from "react";
 import CardImage from "./tools/CardImage";
 import { Skeleton } from "./tools/Skeleton";
+import { Developer } from "@/types/maintypes";
 
 export default function DeveloperCard(){
-    const [data, setData] = useState<any>(null);
+    const [data, setData] = useState<Developer[]>([]);
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {

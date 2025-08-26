@@ -2,9 +2,10 @@
 import { useState, useEffect } from "react";
 import CardImage from "./tools/CardImage";
 import { Skeleton } from "./tools/Skeleton";
+import { Communities } from "@/types/maintypes";
 
 export default function CommunityCard(){
-    const [data, setData] = useState<any>(null);
+    const [data, setData] = useState<Communities[]>([]);
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
