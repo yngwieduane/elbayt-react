@@ -5,12 +5,18 @@ import Navigation from './_components/Navigation';
 import { Metadata } from 'next';
 import Footer from './_components/Footer';
 import "../globals.css";
+import { Poppins } from "next/font/google";
  
 export const metadata: Metadata = {
-  title: "Best Real Estate Website in Egypt | elbayt.com",
-  description: "Find your next residential or commercial property with Egypt’s largest real estate website elbayt.com . Our complete database of real estate listings will make finding your next place easy! | elbayt.com",
+    title: "Best Real Estate Website in Egypt | elbayt.com<",
+    description: "Find your next residential or commercial property with Egypt’s largest real estate website elbayt.com . Our complete database of real estate listings will make finding your next place easy! | elbayt.com",
 };
-
+const poppins = Poppins({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '600', '700'],
+    variable: '--font-poppins',
+    display: 'swap'
+})
 
 export default async function LocaleLayout({
   children,
@@ -27,7 +33,7 @@ export default async function LocaleLayout({
  
   return (
     <html lang={locale}>
-      <body>
+      <body className={poppins.className}>
         <NextIntlClientProvider>
           <Navigation/>
           {children}
