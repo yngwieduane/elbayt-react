@@ -6,5 +6,13 @@
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} ru {🇷🇺 Russian} other {Unknown}}"
+  },
+  "PropertyPage": {
+    "Apartment": "Apartment",
+    "Villa": "Villa",
+    "Chalet": "Chalet",
+    "Townhouse": "Townhouse",
+    "Twinhouse": "Twinhouse",
+    "Penthouse": "Penthouse"
   }
 }
