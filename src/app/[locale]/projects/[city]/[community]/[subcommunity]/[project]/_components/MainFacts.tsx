@@ -50,7 +50,7 @@ export default function MainFacts(props:any) {
         <>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center">
                 <h1 className="text-3xl">{project?.name}: {typeTitle} in {project.main?.community_name} Egypt</h1>
-                <div className="text-end" id={project.main?.projectID}><Button className="bg-ebGreen text-white text-xl rounded px-5 py-2 cursor-pointer border border-bg-ebGreen data-hover:bg-ebLightGreen data-hover:data-active:bg-ebLightGreen data-hover:text-ebGreen data-hover:data-active:text-ebGreen">Ask For Price</Button></div>
+                <div className="text-end" id={project.main?.projectID}><button onClick={modalHandler('contactform', project?.name)} className="bg-ebGreen text-white text-xl rounded px-5 py-2 cursor-pointer border border-bg-ebGreen data-hover:bg-ebLightGreen data-hover:data-active:bg-ebLightGreen data-hover:text-ebGreen data-hover:data-active:text-ebGreen">Ask For Price</button></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5">
                 <div className="relative">

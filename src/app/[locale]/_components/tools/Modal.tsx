@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import MapComponent from '../functions/MapComponent';
+import InquiryForm from '../InquiryForm';
 
 export default function Modal({ modalState, onModalUpdate ,content, data }: { modalState:any;onModalUpdate:any;content: any;data: any }) {
     const [open, setOpen] = useState(modalState);
@@ -33,6 +34,12 @@ export default function Modal({ modalState, onModalUpdate ,content, data }: { mo
             popsize = "sm:max-w-7xl";
             textprop = "hidden";
             popContent = <iframe src={data} className="w-full h-[700px]" />;
+            break;
+        case 'contactform':
+            title = 'Contact Form';
+            popsize = "sm:max-w-md";
+            textprop = "";
+            popContent = <InquiryForm hideFeedbackButton={true}/>;
             break;
         default:
             coordinates = data.split(",")?? "";
