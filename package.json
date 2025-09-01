@@ -12,6 +12,7 @@
     "@fancyapps/ui": "^6.0.25",
     "@headlessui/react": "^2.2.7",
     "@icons-pack/react-simple-icons": "^13.7.0",
+    "@vis.gl/react-google-maps": "^1.5.5",
     "lucide-react": "^0.540.0",
     "mysql2": "^3.14.3",
     "next": "15.4.7",
