@@ -54,7 +54,7 @@ export default function MainFacts(props:any) {
     return (
         <>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-                <h1 className="text-3xl">{project?.name}: {typeTitle} in {project.main?.community_name} Egypt</h1>
+                <h1 className="text-lg md:text-3xl">{project?.name}: {typeTitle} in {project.main?.community_name} Egypt</h1>
                 <div className="text-end" id={project.main?.projectID}><button onClick={modalHandler('contactform', project?.name)} className="bg-ebGreen text-white text-xl rounded px-5 py-2 cursor-pointer border border-bg-ebGreen hover:text-ebGreen hover:bg-ebLightGreen">Ask For Price</button></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5">
@@ -66,12 +66,12 @@ export default function MainFacts(props:any) {
                                     <Image
                                         src={featuredImg}
                                         alt={featuredImg}
-                                        className="h-[500px] w-full"
+                                        className="h-[200px] md:h-[500px] w-full"
                                         width={500}
                                         height={800}
                                     />
                                     ) : (
-                                    <div className='w-full h-[500px] bg-light'></div>
+                                    <div className='w-full h-[200px] md:h-[500px] bg-light'></div>
                                 )}
                             </div>
                         </a>
@@ -163,21 +163,21 @@ export default function MainFacts(props:any) {
                         <div aria-hidden="true" className="w-full border-t border-gray-300 dark:border-white/15" />
                     </div>
                 </div>
-                <div className="grid gap-5  p-10">
-                    <div className="grid gap-5 p-10">
-                        <div className="grid text-xl/6">
+                <div className="grid gap-5 p-5 md:p-10">
+                    <div className="grid grid-cols-2 md:grid-cols-1 gap-5 p-5 md:p-10">
+                        <div className="grid text-md md:text-xl/6">
                             <p className="text-lg font-light">Area Range</p>
                             <p>{project.area_range_min} sqm to {project.area_range_max} sqm</p>
                         </div>
-                        <div className="grid text-2xl">
+                        <div className="grid text-md md:text-2xl">
                             <p className="text-lg font-light">Unit Types</p>
                             <p>{typeTitle}</p>
                         </div>
-                        <div className="grid text-2xl">
+                        <div className="grid text-md md:text-2xl">
                             <p className="text-lg font-light">Project Type</p>
                             <p>Area Range</p>
                         </div>
-                        <div className="grid text-2xl">
+                        <div className="grid text-md md:text-2xl">
                             <p className="text-lg font-light">Developer</p>
                             <p>{project.main?.developer_name}</p>
                         </div>

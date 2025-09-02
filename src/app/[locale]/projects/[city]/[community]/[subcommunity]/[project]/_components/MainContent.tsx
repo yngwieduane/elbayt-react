@@ -30,23 +30,23 @@ export default function MainContent(props:any) {
             <div className="grid grid-cols-1 gap-5">
                 <MainFacts data={project}/>
                 <div className="my-5">
-                    <h2 className="text-3xl mb-4">{project?.name} Floor Plan</h2>
+                    <h2 className="text-xl md:text-3xl mb-4">{project?.name} Floor Plan</h2>
                     <FloorPlans data={project.floorplans}/>
                 </div>
                 <div className="my-5">
-                    <h2 className="text-3xl mb-4">{project?.name} Location Map</h2>
+                    <h2 className="text-xl md:text-3xl mb-4">{project?.name} Location Map</h2>
                     <MapComponent latitude={coordinates['1']} longitude={coordinates['0']} fallbackImage="" height="100%" />
                 </div>
                 <div className="my-5">
-                    <h2 className="text-3xl mb-4">{project?.name} Video</h2>
-                    <iframe src={youtubevid} className="w-full h-[700px]" />
+                    <h2 className="text-xl md:text-3xl mb-4">{project?.name} Video</h2>
+                    <iframe src={youtubevid} className="w-full h-[200px] md:h-[700px]" />
                 </div>
                 <div className="my-5" ref={fancyboxRef}>
-                    <h2 className="text-3xl mb-4">{project?.name} Master Plan</h2>
+                    <h2 className="text-xl md:text-3xl mb-4">{project?.name} Master Plan</h2>
                     <a data-fancybox="masterplan" href={masterPlan}><Image src={masterPlan} alt="Master Plan" width={1000} height={500} className="w-full"/></a>
                 </div>
                 <div className="my-5" ref={fancyboxRef1}>
-                    <h2 className="text-3xl mb-4">{project?.name} Map</h2>
+                    <h2 className="text-xl md:text-3xl mb-4">{project?.name} Map</h2>
                     <a data-fancybox="locationplan" href={locationPlan}><Image src={locationPlan} alt="Map" width={1000} height={500} className="w-full"/></a>
                 </div>
 

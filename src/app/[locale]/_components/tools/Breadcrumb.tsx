@@ -8,8 +8,8 @@ const Breadcrumb = () => {
     const pathSegments = pathname.split('/').filter((segment) => segment);
     pathSegments.shift();
     return (
-        <nav className="bg-ebLightGreen py-2 px-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
-            <ul className="flex items-center space-x-2 text-gray-500">
+        <nav className="bg-ebLightGreen py-2 px-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto  max-w-full whitespace-nowrap scrollbar-hide">
+            <ul className="flex items-center space-x-2 text-gray-500 truncate">
                 <li>
                 <Link href="/" className="hover:text-ebGreen">
                     Home
