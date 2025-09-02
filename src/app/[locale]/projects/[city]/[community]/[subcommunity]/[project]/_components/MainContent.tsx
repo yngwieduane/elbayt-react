@@ -18,30 +18,36 @@ export default function MainContent(props:any) {
     const masterPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.masterplan[0].id}/checksum/${project.media?.images.masterplan[0].checksum}/${project.media?.images.masterplan[0].name}`;
     const locationPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.locationmap[0].id}/checksum/${project.media?.images.locationmap[0].checksum}/${project.media?.images.locationmap[0].name}`;
 
+    const [fancyboxRef] = useFancybox({
+        // Your custom options
+    });
+    const [fancyboxRef1] = useFancybox({
+        // Your custom options
+    });
     return (
         <>  
 
             <div className="grid grid-cols-1 gap-5">
                 <MainFacts data={project}/>
-                <div>
+                <div className="my-5">
                     <h2 className="text-3xl mb-4">{project?.name} Floor Plan</h2>
                     <FloorPlans data={project.floorplans}/>
                 </div>
-                <div>
+                <div className="my-5">
                     <h2 className="text-3xl mb-4">{project?.name} Location Map</h2>
                     <MapComponent latitude={coordinates['1']} longitude={coordinates['0']} fallbackImage="" height="100%" />
                 </div>
-                <div>
+                <div className="my-5">
                     <h2 className="text-3xl mb-4">{project?.name} Video</h2>
                     <iframe src={youtubevid} className="w-full h-[700px]" />
                 </div>
-                <div>
+                <div className="my-5" ref={fancyboxRef}>
                     <h2 className="text-3xl mb-4">{project?.name} Master Plan</h2>
-                    <Image src={masterPlan} alt="Master Plan" width={1000} height={500} className="w-full"/>
+                    <a data-fancybox="masterplan" href={masterPlan}><Image src={masterPlan} alt="Master Plan" width={1000} height={500} className="w-full"/></a>
                 </div>
-                <div>
+                <div className="my-5" ref={fancyboxRef1}>
                     <h2 className="text-3xl mb-4">{project?.name} Map</h2>
-                    <Image src={locationPlan} alt="Map" width={1000} height={500} className="w-full"/>
+                    <a data-fancybox="locationplan" href={locationPlan}><Image src={locationPlan} alt="Map" width={1000} height={500} className="w-full"/></a>
                 </div>
 
             </div>
