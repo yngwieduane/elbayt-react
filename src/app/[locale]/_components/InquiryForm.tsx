@@ -63,34 +63,21 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
     `;
 
     const formDataToSend = {
-        TitleID: "129932",
-        FirstName: data.firstName,
-        FamilyName: data.lastName,
-        MobileCountryCode: "",
-        MobileAreaCode: "",
-        MobilePhone: data.phone,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        message: data.message,
+        currentUrl: currentUrl,
     };
 
     try {
-        const mailRes = await fetch("https://admin.elbayt.com/api/sendemail.php", {
+        const mailRes = await fetch("/api/sendlead/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                body: `
-                <h2>New Lead Submission</h2>
-                <p><strong>Name:</strong> ${data.firstName} ${data.lastName}</p>
-                <p><strong>Phone:</strong> ${data.phone}</p>
-                <p><strong>Email:</strong> ${data.email}</p>
-                <p><strong>Message:</strong> ${data.message}</p>
-                <p><strong>Form Submitted From:</strong> ${currentUrl}</p>
-                `,
-                receiver: "elbaytae@gmail.com,elbayteg@gmail.com",
-                subject: `New Lead - ${data.firstName} ${data.lastName} - ${data.phone} `,
-                filename: "",
-                filedata: "",
-            }),
+            body: JSON.stringify(formDataToSend),
         });
       
         if (mailRes.ok) {
@@ -112,7 +99,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
         {/* Success/Error Messages */}
         {postId === "Success" && <div className="p-3 mb-3 rounded bg-green-500 text-white">Form submitted successfully!</div>}
         {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">Submission failed. Try again.</div>}
-        <h2 className="text-lg font-bold mb-4 text-[#111954]">Inquire</h2>
+        <h2 className="text-lg font-bold mb-4 text-ebGreen hidden" >Inquire</h2>
         <div className="mb-3">
           <input
             type="text"
@@ -148,8 +135,8 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
               <PhoneInput
                 {...field}
                 international
-                defaultCountry="AE"
-                placeholder="+971-555555555"
+                defaultCountry="EG"
+                placeholder="+20-555555555"
                 className="w-full p-3 border rounded-md mb-3"
               />
             )}
@@ -167,7 +154,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
         </div>
         <button
           type="submit"
-          className="w-full border border-[#111954] p-3 mb-6 rounded-md hover:text-[#0c1445] hover:bg-white bg-[#0c1445] text-white font-semibold cursor-pointer"
+          className="w-full border border-ebGreen p-3 mb-6 rounded-md hover:text-ebGreen hover:bg-ebLightGreen bg-ebGreen text-white font-semibold cursor-pointer"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Submitting..." : "Submit"}
@@ -202,7 +189,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
         <div className="mt-4">
           <button
             type="button"
-            className="w-full bg-[#111954] text-white p-3 rounded-md hover:bg-[#0c1445] transition"
+            className="w-full bg-ebGreen text-white p-3 rounded-md hover:bg-[#0c1445] transition"
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
