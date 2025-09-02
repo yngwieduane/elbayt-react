@@ -45,6 +45,11 @@ export default function MainFacts(props:any) {
     const masterPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.masterplan[0].id}/checksum/${project.media?.images.masterplan[0].checksum}/${project.media?.images.masterplan[0].name}`;
     const locationPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.locationmap[0].id}/checksum/${project.media?.images.locationmap[0].checksum}/${project.media?.images.locationmap[0].name}`;
     const youtubevid = project.youtube;
+    let floorplans, gallery;
+
+    if(project.floorplans){
+        floorplans = `https://admin.elbayt.com/${project.floorplans[0].media[0].path}`;
+    }
 
     return (
         <>
@@ -122,13 +127,16 @@ export default function MainFacts(props:any) {
                                     <Compass color="#06bbab" />
                                 </a>
                                 ) : ("")}
-                                <button
+                                {floorplans !== '' ? (
+                                <a
+                                    data-fancybox="floorplans" href={floorplans}
                                     type="button"
                                     className="relative cursor-pointer inline-flex items-center bg-white/90 px-3 py-2 text-gray-400 inset-ring inset-ring-gray-300 hover:bg-gray-50 focus:z-10"
                                 >
                                     <span className="sr-only">Floor Plans</span>
                                     <Scan color="#06bbab" />
-                                </button>
+                                </a>
+                                ) : ("")}
                                 {project.brochure_url !== '' ? (
                                 <button
                                     onClick={modalHandler('brochure', project.brochure_url)}

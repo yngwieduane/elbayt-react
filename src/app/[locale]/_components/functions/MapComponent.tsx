@@ -35,14 +35,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ latitude, longitude, fallba
           </APIProvider>
         </div>
       ) : (
-        <Image
-          width={200}
-          height={200}
-          src={fallbackImage}
-          alt="Fallback Map"
-          className="w-full h-auto rounded-lg"
-          
-        />
+        ""
       )}
     </div>
   );

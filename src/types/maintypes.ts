@@ -72,9 +72,81 @@ export type MediaCategories = {
     [key: string]: DocumentItem[];
 };
 
+export type FloorPlans = {
+    [key: string]: FloorPlanItem[];
+};
+
+export type FloorPlanItem = {
+    id: string;
+    create_dt: string;
+    create_id: string;
+    modify_dt: string;
+    modify_id: string;
+    status: string;
+    floor_down: string;
+    floor_up: string;
+    project_id: string;
+    bedrooms: string;
+    bedroom_1: string;
+    metrics: string;
+    size: string;
+    type: string;
+    name: string;
+    price: string;
+    position: string;
+    parking_places: string | null;
+    maids_room: string | null;
+    virtual_tour: string;
+    title: string;
+    matterport: string;
+    store_room: string | null;
+    balcony: string | null;
+    total_no: string;
+    driverroom: string | null;
+    laundryroom: string | null;
+    utilityroom: string | null;
+    nannyroom: string | null;
+    swimmingpool: string | null;
+    jacuzzi: string | null;
+    gym: string | null;
+    backyard: string | null;
+    frontyard: string | null;
+    rooftopfields: string | null;
+    youtube: string;
+    studyroom: string | null;
+    balconysize: string;
+    gardensize: string;
+    plotsize: string;
+    roofsize: string;
+    walkinwardrobe: string | null;
+    garden: string | null;
+    stairs: string | null;
+    ensuitenumber: string;
+    balconynumber: string;
+    parkingnumber: string;
+    openkitchen: string;
+    coveredparking: string | null;
+    terrace: string;
+    middle_unit: string | null;
+    corner_unit: string | null;
+    views: string | null;
+    media: UnitMedia[];
+    label:string;
+    key:string;
+};
+
+export interface UnitMedia {
+    main: string;
+    facilities: string;
+    name: string;
+    path: string;
+};
+
+
 export interface ProjectDetails {
     main: Project[];
     media: MediaCategories[];
+    floorplans: FloorPlans[];
     name: string;
     __newslugname__: string;
     ar_name: string;
