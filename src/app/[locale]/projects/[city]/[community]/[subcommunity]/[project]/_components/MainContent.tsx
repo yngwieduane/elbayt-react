@@ -12,7 +12,7 @@ export default function MainContent(props:any) {
     const project = props.data;
     const t = useTranslations('PropertyPage');
 
-    let coordinates = project.coords_coords?.split(",")?? "";
+    const coordinates = project.coords_coords?.split(",")?? "";
     const youtubevid = project.youtube?? "";
     const featuredImg = `https://admin.elbayt.com/files/image/id/${project.media?.images.exterior[0].id}/checksum/${project.media?.images.exterior[0].checksum}/${project.media?.images.exterior[0].name}`;
     const masterPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.masterplan[0].id}/checksum/${project.media?.images.masterplan[0].checksum}/${project.media?.images.masterplan[0].name}`;
