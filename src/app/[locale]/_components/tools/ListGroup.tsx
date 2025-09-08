@@ -1,3 +1,5 @@
+import { Link } from "@/i18n/navigation";
+
 export default function ListGroup(props:any) {
     
     return (
@@ -6,9 +8,9 @@ export default function ListGroup(props:any) {
             {props.data.map((data:any, index: number) => {
                 return (
                     <li key={index}>
-                        <a href="#" className="block hover:bg-gray-50 px-4 py-4 sm:px-6">
+                        <Link href={data.href} className="block hover:bg-gray-50 px-4 py-4 sm:px-6">
                             {data.name}
-                        </a>
+                        </Link>
                     </li>
                 )}
             )}

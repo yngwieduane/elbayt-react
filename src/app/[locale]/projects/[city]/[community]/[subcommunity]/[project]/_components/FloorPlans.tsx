@@ -48,7 +48,7 @@ export default function FloorPlans(props:any) {
                                                     href={href}
                                                     className="text-indigo-600 hover:text-indigo-900 "
                                                 >
-                                                    <Image src={href} width={200} height={200} alt={title}/>
+                                                    <Image src={href} width={100} height={100} alt={title}/>
                                                 </a>
                                                 </td>
                                                 <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500 ">
