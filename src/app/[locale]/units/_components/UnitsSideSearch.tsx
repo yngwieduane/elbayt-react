@@ -142,7 +142,7 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
                 {/* Beds Filter */}
                 <div>
                     <Listbox value={beds} onChange={(e:any) => {
-                        let val = e;
+                        const val = e;
                         setBeds(val ? Number(val) : null);
                         updateQuery('beds', val ? val : null);
                     }}>
@@ -180,7 +180,7 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
                 {/* Property Type */}
                 <div>
                     <Listbox value={propertyType} onChange={(e:any) => {
-                        let val = e;
+                        const val = e;
                         setPropertyType(val || null);
                         updateQuery('propertyType', val || null);
                     }}>
