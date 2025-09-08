@@ -105,7 +105,7 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
                 {/* categories */}
                 <div>
                     <Listbox value={categories} onChange={(e:any) => {
-                        let val = e;
+                        const val = e;
                         setPropertyType(val || null);
                         updateQuery('categories', val || null);
                     }}>
