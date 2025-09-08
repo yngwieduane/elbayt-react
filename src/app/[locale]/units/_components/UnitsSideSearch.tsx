@@ -136,7 +136,7 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
                     <Label className="block text-lg font-medium text-gray-900">Community</Label>
                     <div className="relative mt-2">
                         <ListboxButton className="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-2.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 text-xl">
-                        <span className="col-start-1 row-start-1 truncate pr-6">{beds}</span>
+                        <span className="col-start-1 row-start-1 truncate pr-6">{community}</span>
                         <ChevronDown
                             aria-hidden="true"
                             className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-500 sm:size-4"
