@@ -5,7 +5,8 @@ export async function GET(request: NextRequest) {
     const beds = searchParams.get('beds') || '';
     const propertyType = searchParams.get('propertyType') || '';
     const category = searchParams.get('category') || '';
-    const apiurl = `https://admin.elbayt.com/api/getunits.php?beds=${beds}&category=${category}&propertyType=${propertyType}`;
+    const community = searchParams.get('community') || '';
+    const apiurl = `https://admin.elbayt.com/api/getunits.php?community=${community}&beds=${beds}&category=${category}&propertyType=${propertyType}`;
     console.log('Fetching getproperties data...'+beds);
     const response = await fetch(
         apiurl,

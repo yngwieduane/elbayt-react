@@ -270,6 +270,11 @@ export interface ProjectDetails {
     brochure_url: string;
 };
 
+export interface MainUnit {
+    main: UnitListing[];
+    media: MediaCategories[];
+}
+
 export interface UnitListing {
     id: string;
     create_dt: string;

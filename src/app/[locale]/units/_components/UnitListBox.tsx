@@ -24,6 +24,11 @@ export default function UnitListBox(props:any){
         <>
         <article className="relative isolate flex flex-col gap-5 lg:flex-row rounded-lg w-full border border-gray-300 p-2 items-center">
             <div className="relative w-full h-52 sm:aspect-2/1 lg:aspect-square lg:w-64 lg:shrink-0">
+                <img
+                alt=""
+                src={props.img}
+                className="absolute inset-0 size-full rounded-2xl bg-gray-50 object-cover"
+                />
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-gray-900/10 ring-inset" />
                 <div className="absolute left-5 md:hidden bottom-5 z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
                     {props.data.project}

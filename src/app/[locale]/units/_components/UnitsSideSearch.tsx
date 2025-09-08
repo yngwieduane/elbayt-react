@@ -6,6 +6,7 @@ import { useDebouncedCallback } from 'use-debounce';
 import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react'
 import { Check, ChevronDown, ChevronUp } from 'lucide-react';
 import Sticky from 'react-sticky-el';
+import { Communities } from '@/types/maintypes';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 100000000;
@@ -29,7 +30,27 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
     const [baths, setBaths] = useState<number | null>(null);
     const [propertyType, setPropertyType] = useState<string | null>(null);
     const [categories, setCategories] = useState<string | null>(null);
+    const [community, setCommunity] = useState<string | null>(null);
+    const [communities, setCommunities] = useState<Communities[]>([]);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    `/api/getcommunities/?sort=community`
+                );
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const result = await response.json();
+                setCommunities(result);
+            } catch (error) {
+                console.error("Fetch error:", error);
+            } finally {
+            }
+        };
+        fetchData();
+    }, []);
     useEffect(() => {
         const min = Number(searchParams.get('minPrice')) || minPriceDefault;
         const max = Number(searchParams.get('maxPrice')) || maxPriceDefault;
@@ -37,6 +58,7 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
 
         setBeds(searchParams.get('beds') ? Number(searchParams.get('beds')) : null);
         setBaths(searchParams.get('baths') ? Number(searchParams.get('baths')) : null);
+        setCommunity(searchParams.get('community') || null);
         setPropertyType(searchParams.get('propertyType') || null);
         setCategories(searchParams.get('categories') || null);
     }, [searchParams]);
@@ -62,12 +84,14 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
         params.delete('propertyType');
         params.delete('propertyId');
         params.delete('categories');
+        params.delete('community');
         router.push(`${pathname}?${params.toString()}`);
 
         setPriceRange([minPriceDefault, maxPriceDefault]);
         setBeds(null);
         setBaths(null);
         setPropertyType(null);
+        setCommunity(null);
         console.log("reset");
         onChange('true')
     };
@@ -102,8 +126,45 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
                     /> */}
                 </div>
 
+                {/* communities */
+                }<div>
+                    <Listbox value={beds} onChange={(e:any) => {
+                        const val = e;
+                        setCommunity(val || null);
+                        updateQuery('community', val ? val : null);
+                    }}>
+                    <Label className="block text-lg font-medium text-gray-900">Community</Label>
+                    <div className="relative mt-2">
+                        <ListboxButton className="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-2.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 text-xl">
+                        <span className="col-start-1 row-start-1 truncate pr-6">{beds}</span>
+                        <ChevronDown
+                            aria-hidden="true"
+                            className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-500 sm:size-4"
+                        />
+                        </ListboxButton>
+
+                        <ListboxOptions
+                            transition
+                            className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-lg shadow-lg ring-1 ring-black/5 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm"
+                        >
+                        {communities.map((post:any,index:any) => (
+                        <ListboxOption
+                            key={index}
+                            value={post.name}
+                            className="group relative cursor-default py-2 pr-9 pl-3 text-gray-900 select-none data-focus:bg-indigo-600 data-focus:text-white data-focus:outline-hidden"
+                            >
+                            <span className="block truncate font-normal group-data-selected:font-semibold">{post.name}</span>
+                            <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 group-not-data-selected:hidden group-data-focus:text-white">
+                            <Check aria-hidden="true" className="size-5" />
+                            </span>
+                        </ListboxOption>
+                        ))}
+                        </ListboxOptions>
+                    </div>
+                    </Listbox>
+                </div>
                 {/* categories */}
-                <div>
+                <div className='hidden'>
                     <Listbox value={categories} onChange={(e:any) => {
                         const val = e;
                         setPropertyType(val || null);
