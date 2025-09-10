@@ -25,7 +25,7 @@ export default function MainFacts(props:any) {
     const t = useTranslations('PropertyPage');
 
     const unimultitype = project?.property_type1;
-    let typeTitle;
+    let typeTitle, locationPlan, floorplans, youtubevid, masterPlan;
     if(unimultitype){
         const jsonObject = JSON.parse(unimultitype);
         console.log(jsonObject);
@@ -42,13 +42,25 @@ export default function MainFacts(props:any) {
     });
     
     const featuredImg = `https://admin.elbayt.com/files/image/id/${project.media?.images.exterior[0].id}/checksum/${project.media?.images.exterior[0].checksum}/${project.media?.images.exterior[0].name}`;
-    const masterPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.masterplan[0].id}/checksum/${project.media?.images.masterplan[0].checksum}/${project.media?.images.masterplan[0].name}`;
-    const locationPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.locationmap[0].id}/checksum/${project.media?.images.locationmap[0].checksum}/${project.media?.images.locationmap[0].name}`;
-    const youtubevid = project.youtube;
-    let floorplans, gallery;
 
-    if(project.floorplans){
-        floorplans = `https://admin.elbayt.com/${project.floorplans[0].media[0].path}`;
+    {project.floorplans !== null
+        ? floorplans = `https://admin.elbayt.com/${project.floorplans}`
+        : floorplans = '';
+    }
+
+    {project.youtube !== null
+        ? youtubevid = project.youtube
+        : youtubevid = '';
+    }
+
+    {project.media?.images.locationmap.length !== 0
+        ? locationPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.locationmap[0].id}/checksum/${project.media?.images.locationmap[0].checksum}/${project.media?.images.locationmap[0].name}`
+        : locationPlan = '';
+    }
+
+    {project.media?.images.masterplan.length !== 0
+        ? masterPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.masterplan[0].id}/checksum/${project.media?.images.masterplan[0].checksum}/${project.media?.images.masterplan[0].name}`
+        : masterPlan = '';
     }
 
     return (

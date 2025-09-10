@@ -11,12 +11,10 @@ import MapComponent from "@/app/[locale]/_components/functions/MapComponent";
 export default function MainContent(props:any) {
     const project = props.data;
     const t = useTranslations('PropertyPage');
-
+    let locationPlan,masterPlan;
     const coordinates = project.coords_coords?.split(",")?? "";
     const youtubevid = project.youtube?? "";
     const featuredImg = `https://admin.elbayt.com/files/image/id/${project.media?.images.exterior[0].id}/checksum/${project.media?.images.exterior[0].checksum}/${project.media?.images.exterior[0].name}`;
-    const masterPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.masterplan[0].id}/checksum/${project.media?.images.masterplan[0].checksum}/${project.media?.images.masterplan[0].name}`;
-    const locationPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.locationmap[0].id}/checksum/${project.media?.images.locationmap[0].checksum}/${project.media?.images.locationmap[0].name}`;
 
     const [fancyboxRef] = useFancybox({
         // Your custom options
@@ -24,31 +22,49 @@ export default function MainContent(props:any) {
     const [fancyboxRef1] = useFancybox({
         // Your custom options
     });
+
+    {project.media?.images.locationmap.length !== 0
+        ? locationPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.locationmap[0].id}/checksum/${project.media?.images.locationmap[0].checksum}/${project.media?.images.locationmap[0].name}`
+        : locationPlan = '';
+    }
+
+    {project.media?.images.masterplan.length !== 0
+        ? masterPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.masterplan[0].id}/checksum/${project.media?.images.masterplan[0].checksum}/${project.media?.images.masterplan[0].name}`
+        : masterPlan = '';
+    }
     return (
         <>  
 
             <div className="grid grid-cols-1 gap-5">
                 <MainFacts data={project}/>
+                {project.floorplans !== null ? (
                 <div className="my-5">
                     <h2 className="text-xl md:text-3xl mb-4">{project?.name} Floor Plan</h2>
                     <FloorPlans data={project.floorplans}/>
                 </div>
+                ) : ("")}
                 <div className="my-5">
                     <h2 className="text-xl md:text-3xl mb-4">{project?.name} Location Map</h2>
                     <MapComponent latitude={coordinates['1']} longitude={coordinates['0']} fallbackImage="" height="100%" />
                 </div>
+                {youtubevid !== '' ? (
                 <div className="my-5">
                     <h2 className="text-xl md:text-3xl mb-4">{project?.name} Video</h2>
                     <iframe src={youtubevid} className="w-full h-[200px] md:h-[700px]" />
                 </div>
+                ) : ("")}
+                {masterPlan !== '' ? (
                 <div className="my-5" ref={fancyboxRef}>
                     <h2 className="text-xl md:text-3xl mb-4">{project?.name} Master Plan</h2>
                     <a data-fancybox="masterplan" href={masterPlan}><Image src={masterPlan} alt="Master Plan" width={1000} height={500} className="w-full"/></a>
                 </div>
+                ) : ("")}
+                {locationPlan !== '' ? (
                 <div className="my-5" ref={fancyboxRef1}>
                     <h2 className="text-xl md:text-3xl mb-4">{project?.name} Map</h2>
                     <a data-fancybox="locationplan" href={locationPlan}><Image src={locationPlan} alt="Map" width={1000} height={500} className="w-full"/></a>
                 </div>
+                ) : ("")}
 
             </div>
 
