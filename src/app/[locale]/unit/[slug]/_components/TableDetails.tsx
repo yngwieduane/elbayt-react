@@ -16,7 +16,7 @@ export default function TableDetails(props: any) {
 
     return (
         <>
-        <div className="grid grid-cols-2 my-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 my-10">
             <div className="">
                 <table className="relative min-w-full  ">
                     <tbody>

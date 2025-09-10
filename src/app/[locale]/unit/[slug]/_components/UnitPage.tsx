@@ -59,7 +59,7 @@ export default function UnitPage(props: any) {
                 <BreadcrumbUnit/>
             </div>
             <div className="container mx-auto my-5 px-5">
-                <div className="mainuppper grid grid-cols-1 md:grid-cols-4 gap-x-5">
+                <div className="mainuppper grid grid-cols-1 md:grid-cols-4 md:gap-x-5">
                     <div className="col-span-3">
                         <h1 className="text-2xl mb-5">{maintitle}</h1>
                         <Image
