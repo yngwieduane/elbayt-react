@@ -1,5 +1,7 @@
 'use client'
+import { Link } from "@/i18n/navigation";
 import { useFormatter } from "next-intl";
+import slugify from "react-slugify";
 export default function TableDetails(props: any) {
     const format = useFormatter();
     const main = props.data;
@@ -10,6 +12,7 @@ export default function TableDetails(props: any) {
     }else{
       HOdate = false;
     }
+    const projectURL = '/projects/' + slugify(main.city) + "/" + slugify(main.area) + "/" + slugify(main.district) + "/" + slugify(main.project);
 
     return (
         <>
@@ -86,7 +89,7 @@ export default function TableDetails(props: any) {
                             Project Name
                         </td>
                         <td scope="col" className="px-3 py-3.5 text-left text-xl font-semibold text-gray-900 ">
-                            {main.project}
+                            <Link href={projectURL}>{main.project}</Link>
                         </td>
                     </tr>
                     <tr>
