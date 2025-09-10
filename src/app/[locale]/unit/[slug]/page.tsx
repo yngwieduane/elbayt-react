@@ -74,7 +74,7 @@ export default async function Page({ params }: Props){
         category = 'rent';
     }
 
-    const posts = await fetch(`http://localhost:3000/api/getunit?unit=${code}`).then((res) => res.json())
+    const posts = await fetch(`https://elbayt-react.vercel.app/api/getunit?unit=${code}`).then((res) => res.json())
     
     const main = posts[0].main;
     const media = posts[0].media;
