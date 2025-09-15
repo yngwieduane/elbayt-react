@@ -11,7 +11,7 @@ import MapComponent from "@/app/[locale]/_components/functions/MapComponent";
 export default function MainContent(props:any) {
     const project = props.data;
     const t = useTranslations('PropertyPage');
-    let locationPlan,masterPlan;
+    let locationPlan,masterPlan,floorplans;
     const coordinates = project.coords_coords?.split(",")?? "";
     const youtubevid = project.youtube?? "";
     const featuredImg = `https://admin.elbayt.com/files/image/id/${project.media?.images.exterior[0].id}/checksum/${project.media?.images.exterior[0].checksum}/${project.media?.images.exterior[0].name}`;
@@ -32,15 +32,20 @@ export default function MainContent(props:any) {
         ? masterPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.masterplan[0].id}/checksum/${project.media?.images.masterplan[0].checksum}/${project.media?.images.masterplan[0].name}`
         : masterPlan = '';
     }
+
+    {project.floorplans === 0
+        ? floorplans = ''
+        : floorplans = project.floorplans;
+    }
     return (
         <>  
 
             <div className="grid grid-cols-1 gap-5">
                 <MainFacts data={project}/>
-                {project.floorplans !== null ? (
+                {floorplans !== '' ? (
                 <div className="my-5">
                     <h2 className="text-xl md:text-3xl mb-4">{project?.name} Floor Plan</h2>
-                    <FloorPlans data={project.floorplans}/>
+                    <FloorPlans data={floorplans}/>
                 </div>
                 ) : ("")}
                 <div className="my-5">

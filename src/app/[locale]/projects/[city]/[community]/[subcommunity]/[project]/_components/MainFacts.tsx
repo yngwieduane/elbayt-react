@@ -25,7 +25,7 @@ export default function MainFacts(props:any) {
     const t = useTranslations('PropertyPage');
 
     const unimultitype = project?.property_type1;
-    let typeTitle, locationPlan, floorplans, youtubevid, masterPlan;
+    let typeTitle, locationPlan, floorplans, youtubevid, masterPlan, galleryExt, galleryInt, galleryFac, maintype;
     if(unimultitype){
         const jsonObject = JSON.parse(unimultitype);
         console.log(jsonObject);
@@ -43,9 +43,9 @@ export default function MainFacts(props:any) {
     
     const featuredImg = `https://admin.elbayt.com/files/image/id/${project.media?.images.exterior[0].id}/checksum/${project.media?.images.exterior[0].checksum}/${project.media?.images.exterior[0].name}`;
 
-    {project.floorplans !== null
-        ? floorplans = `https://admin.elbayt.com/${project.floorplans}`
-        : floorplans = '';
+    {project.floorplans === 0
+        ? floorplans = ''
+        : floorplans = project.floorplans;
     }
 
     {project.youtube !== null
@@ -61,6 +61,27 @@ export default function MainFacts(props:any) {
     {project.media?.images.masterplan.length !== 0
         ? masterPlan = `https://admin.elbayt.com/files/image/id/${project.media?.images.masterplan[0].id}/checksum/${project.media?.images.masterplan[0].checksum}/${project.media?.images.masterplan[0].name}`
         : masterPlan = '';
+    }
+
+    {project.media?.images.exterior === 0
+        ? galleryExt = ''
+        : galleryExt = project.media?.images.exterior;
+    }
+
+    {project.media?.images.interior === 0
+        ? galleryInt = ''
+        : galleryInt = project.media?.images.interior;
+    }
+
+    {project.media?.images.facilities === 0
+        ? galleryFac = ''
+        : galleryFac = project.media?.images.facilities;
+    }
+    const storedItem = project.property_type;
+    if (storedItem) {
+        maintype = JSON.parse(storedItem);
+    } else {
+        maintype = '';
     }
 
     return (
@@ -87,6 +108,17 @@ export default function MainFacts(props:any) {
                                 )}
                             </div>
                         </a>
+                        {galleryInt !== '' ? (
+                            <>
+                                {galleryInt?.map((post:any,index:any) => { 
+                                    const title = post.name;
+                                    const href = `https://admin.elbayt.com/files/image/id/${post.id}/checksum/${post.checksum}/${post.name}`;
+                                    return (
+                                        <a key={index} className="hidden" data-fancybox="gallery"href={href}>{title}</a>
+                                    )
+                                })}
+                            </>
+                        ) : ("")}
                     </div>
                     <div className="absolute w-full flex items-center bottom-0">
                         <div aria-hidden="true" className="w-full border-t border-gray-300 dark:border-white/15" />
@@ -96,7 +128,7 @@ export default function MainFacts(props:any) {
                                 <a 
                                     data-fancybox="gallery" href={featuredImg}
                                     type="button"
-                                    className="relative cursor-pointer inline-flex items-center rounded-l-md bg-white/90 px-3 py-2 text-gray-400 text-gray-400 inset-ring inset-ring-gray-300 hover:bg-gray-50 focus:z-10"
+                                    className="relative cursor-pointer inline-flex items-center bg-white/90 px-3 py-2 text-gray-400 text-gray-400 inset-ring inset-ring-gray-300 hover:bg-gray-50 focus:z-10"
                                 >
                                     <span className="sr-only">Gallery</span>
                                     <GalleryThumbnails color="#06bbab" />
@@ -141,13 +173,24 @@ export default function MainFacts(props:any) {
                                 ) : ("")}
                                 {floorplans !== '' ? (
                                 <a
-                                    data-fancybox="floorplans" href={floorplans}
+                                    data-fancybox="floorplans" href={`https://admin.elbayt.com/${floorplans?.[0].media?.[0].path}`}
                                     type="button"
                                     className="relative cursor-pointer inline-flex items-center bg-white/90 px-3 py-2 text-gray-400 inset-ring inset-ring-gray-300 hover:bg-gray-50 focus:z-10"
                                 >
                                     <span className="sr-only">Floor Plans</span>
                                     <Scan color="#06bbab" />
                                 </a>
+                                ) : ("")}
+                                {floorplans !== '' ? (
+                                    <>
+                                        {floorplans?.map((post:any,index:any) => { 
+                                            const title = post.name;
+                                            const href = `https://admin.elbayt.com/${post.media[0].path}`;
+                                            return (
+                                                <a key={index} className="hidden" data-fancybox="floorplans" href={href}>{title}</a>
+                                            )
+                                        })}
+                                    </>
                                 ) : ("")}
                                 {project.brochure_url !== '' ? (
                                 <button
@@ -163,7 +206,7 @@ export default function MainFacts(props:any) {
                                 <button
                                     onClick={modalHandler('marketingtext', {marketText:project.marketadditionaltext,marketDate:project.featured_date})}
                                     type="button"
-                                    className="relative cursor-pointer inline-flex items-center rounded-r-md bg-white/90 px-3 py-2 text-gray-400 inset-ring inset-ring-gray-300 hover:bg-gray-50 focus:z-10"
+                                    className="relative cursor-pointer inline-flex items-center bg-white/90 px-3 py-2 text-gray-400 inset-ring inset-ring-gray-300 hover:bg-gray-50 focus:z-10"
                                 >
                                     <span className="sr-only">Information</span>
                                     <Info color="#06bbab" />
@@ -177,17 +220,19 @@ export default function MainFacts(props:any) {
                 </div>
                 <div className="grid gap-5 p-5 md:p-10">
                     <div className="grid grid-cols-2 md:grid-cols-1 gap-5 p-5 md:p-10">
-                        <div className="grid text-md md:text-xl/6">
-                            <p className="text-lg font-light">Area Range</p>
-                            <p>{project.area_range_min} sqm to {project.area_range_max} sqm</p>
-                        </div>
+                        {project.area_range_min !== '' ? (
+                            <div className="grid text-md md:text-xl/6">
+                                <p className="text-lg font-light">Area Range</p>
+                                <p>{project.area_range_min} sqm to {project.area_range_max} sqm</p>
+                            </div>
+                        ) : ("")}
                         <div className="grid text-md md:text-2xl">
                             <p className="text-lg font-light">Unit Types</p>
                             <p>{typeTitle}</p>
                         </div>
                         <div className="grid text-md md:text-2xl">
                             <p className="text-lg font-light">Project Type</p>
-                            <p>Area Range</p>
+                            <p>{maintype}</p>
                         </div>
                         <div className="grid text-md md:text-2xl">
                             <p className="text-lg font-light">Developer</p>
