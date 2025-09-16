@@ -13,6 +13,15 @@
     "Chalet": "Chalet",
     "Townhouse": "Townhouse",
     "Twinhouse": "Twinhouse",
+    "Penthouse": "Penthouse",
+    "Duplex": "Duplex"
+  },
+  "DevelopersPage": {
+    "Apartment": "Apartment",
+    "Villa": "Villa",
+    "Chalet": "Chalet",
+    "Townhouse": "Townhouse",
+    "Twinhouse": "Twinhouse",
     "Penthouse": "Penthouse"
   }
 }

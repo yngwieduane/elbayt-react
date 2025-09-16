@@ -1,0 +1,71 @@
+'use client'
+import { useState, useEffect } from "react";
+import CardImage from "./tools/CardImage";
+import { Skeleton } from "./tools/Skeleton";
+import { Communities } from "@/types/maintypes";
+
+export default function PopularCommunity(props:any){
+    const [data, setData] = useState<Communities[]>([]);
+    const [isLoading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setLoading(true);
+
+                const response = await fetch(
+                    `/api/getcommunities/?sort=community`
+                );
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                setData(result);
+            } catch (error) {
+                console.error("Fetch error:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
+    return (
+        <>
+        <h1 className='text-2xl text-center my-5'>Popular Communities</h1>
+        <div className={props.className}>
+            <ul className="flex flex-nowrap space-x-4">
+                {isLoading ? (
+                    <>
+                        <Skeleton/>
+                        <Skeleton/>
+                        <Skeleton/>
+                        <Skeleton/>
+                    </>
+                ) : (
+                    <>
+                    {data.length > 0 && (
+                        <>
+                            {data.slice(0, 8).map((post:any,index:any) => { 
+                                const title = post.name;
+                                const href = "";
+                                const image = `https://admin.elbayt.com/files/image/id/${post.document_id}/checksum/${post.checksum}/${post.docuname}`;
+                                return (<li key={index} className="flex-none w-40">
+                                    <CardImage key={index} name={title} image={image} href={href}/>
+                                    </li>)
+                            })}
+                        </>
+                    )}
+                    </>
+                )}
+                {!data ? (
+                    <p>No properties found.</p>
+                ) : (
+                    <></>
+            )}
+            </ul>
+        </div>
+        </>
+    );
+};

@@ -1,11 +1,13 @@
 'use client'
 import Modal from "@/app/[locale]/_components/tools/Modal";
 import useFancybox from "@/app/[locale]/_components/tools/useFancybox";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@headlessui/react";
 import { Compass, FileText, GalleryThumbnails, Info, MapIcon, MapPin, PaperclipIcon, PencilIcon, RectangleGoggles, RectangleGogglesIcon, Scan, Video } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useState } from "react";
+import slugify from "react-slugify";
 export default function MainFacts(props:any) {
     const project = props.data;
     const [setModal, setSetModal] = useState(false);
@@ -47,7 +49,7 @@ export default function MainFacts(props:any) {
         ? floorplans = ''
         : floorplans = project.floorplans;
     }
-
+    
     {project.youtube !== null
         ? youtubevid = project.youtube
         : youtubevid = '';
@@ -171,7 +173,7 @@ export default function MainFacts(props:any) {
                                     <Compass color="#06bbab" />
                                 </a>
                                 ) : ("")}
-                                {floorplans !== '' ? (
+                                {JSON.stringify(floorplans) !== '[]' ? (
                                 <a
                                     data-fancybox="floorplans" href={`https://admin.elbayt.com/${floorplans?.[0].media?.[0].path}`}
                                     type="button"
@@ -181,7 +183,7 @@ export default function MainFacts(props:any) {
                                     <Scan color="#06bbab" />
                                 </a>
                                 ) : ("")}
-                                {floorplans !== '' ? (
+                                {JSON.stringify(floorplans) !== '[]' ? (
                                     <>
                                         {floorplans?.map((post:any,index:any) => { 
                                             const title = post.name;
@@ -236,7 +238,7 @@ export default function MainFacts(props:any) {
                         </div>
                         <div className="grid text-md md:text-2xl">
                             <p className="text-lg font-light">Developer</p>
-                            <p>{project.main?.developer_name}</p>
+                            <Link href={`/developer/${slugify(project.main?.developer_name)}`}>{project.main?.developer_name}</Link>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 gap-5">

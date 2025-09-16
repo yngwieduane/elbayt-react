@@ -17,7 +17,8 @@ export interface Developer  {
     ordered: string,
     document_id: string,
     checksum: string,
-    docuname: string
+    docuname: string,
+    slug: string
 }
 export interface Project  {
     projectID: string;

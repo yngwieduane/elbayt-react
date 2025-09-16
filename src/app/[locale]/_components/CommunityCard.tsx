@@ -4,7 +4,7 @@ import CardImage from "./tools/CardImage";
 import { Skeleton } from "./tools/Skeleton";
 import { Communities } from "@/types/maintypes";
 
-export default function CommunityCard(){
+export default function CommunityCard(props:any){
     const [data, setData] = useState<Communities[]>([]);
     const [isLoading, setLoading] = useState(true);
 
@@ -32,7 +32,7 @@ export default function CommunityCard(){
         fetchData();
     }, []);
     return (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className={props.className}>
             {isLoading ? (
                 <>
                     <Skeleton/>

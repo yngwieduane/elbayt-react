@@ -46,7 +46,7 @@ export default function DeveloperCard(){
                     <>
                         {data.slice(0, 8).map((post:any,index:any) => { 
                             const title = post.name;
-                            const href = "";
+                            const href = `/developer/${post.slug}`;
                             const image = `https://admin.elbayt.com/files/image/id/${post.document_id}/checksum/${post.checksum}/${post.docuname}`;
                             return <CardImage key={index} name={title} image={image} href={href}/>
                         })}

@@ -14,7 +14,7 @@ export default function CardImage(props:any) {
                         height={200}
                     />
                 </div>
-                <div className="px-4 py-4 sm:px-6 text-center group-hover:text-white">
+                <div className="px-2 py-4 text-sm text-center group-hover:text-white">
                     {props.name}
                 </div>
             </div>
