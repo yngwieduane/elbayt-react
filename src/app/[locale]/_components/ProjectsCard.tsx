@@ -7,11 +7,18 @@ import CardImageWithDetails from "./tools/CardImageWithDetails";
 import { useTranslations } from "next-intl";
 import Pagination from "./tools/Pagination";
 
-export default function ProjectsCard(props:any){
+export default function ProjectsCard({
+    className,
+    developerid,
+    page
+}:{
+    className: string;
+    developerid: string;
+    page: number;
+}){
     const [data, setData] = useState<ProjectDetails[]>([]);
     const [totalPage, setTotalPage] = useState(0);
     const [isLoading, setLoading] = useState(true);
-    const developerid = props.developerid;
     const t = useTranslations('PropertyPage');
 
     useEffect(() => {
@@ -20,7 +27,7 @@ export default function ProjectsCard(props:any){
                 setLoading(true);
 
                 const response = await fetch(
-                    `/api/getprojectslist/?developerid=${developerid}`
+                    `/api/getprojectslist/?developerid=${developerid}&page=${page}`
                 );
 
                 if (!response.ok) {
@@ -29,7 +36,7 @@ export default function ProjectsCard(props:any){
 
                 const result = await response.json();
                 setData(result.result);
-                setTotalPage(result.total);
+                setTotalPage(Math.ceil(Number(result.total) / 10));
             } catch (error) {
                 console.error("Fetch error:", error);
             } finally {
@@ -37,11 +44,14 @@ export default function ProjectsCard(props:any){
             }
         };
         fetchData();
-    }, []);
+    }, [page]);
     return (
         <>
-            <Pagination totalPages={totalPage}/>
-            <div className={props.className}>
+            <div className="flex justify-between mb-5">
+                <div>Search{totalPage}</div>
+                <Pagination totalPages={totalPage} />
+            </div>
+            <div className={className}>
                 {isLoading ? (
                     <>
                         <Skeleton/>

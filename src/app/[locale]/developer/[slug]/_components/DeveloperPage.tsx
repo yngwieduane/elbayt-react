@@ -58,7 +58,7 @@ export default function DeveloperPage(props: any) {
                                 return (
                                     <div key={index}>
                                         <h1 className="text-3xl mb-2 text-center mb-5">{title}</h1>
-                                        <ProjectsCard className="grid grid-cols-2 md:grid-cols-4 gap-4" developerid={id}/>
+                                        <ProjectsCard className="grid grid-cols-2 md:grid-cols-4 gap-4" developerid={id} page={props.page}/>
                                     </div>
                                 )
                             })}

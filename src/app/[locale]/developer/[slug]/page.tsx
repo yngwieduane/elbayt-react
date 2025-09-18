@@ -19,13 +19,20 @@ export async function generateMetadata(
     }
 }
 
-export default async function Page({ params }: Props){
+export default async function Page({
+    params,
+    searchParams
+}:{
+    params: Promise<{slug:string;}>;
+    searchParams: Promise<{page?:number;propertyname?:string;}>;
+}){
     const { slug } = await params
+    const {page = 1,propertyname} = await searchParams;
     
     const slugString = Array.isArray(slug) ? slug[0] : slug || "";
     return (
         <>
-            <DeveloperPage slug={slugString}/>
+            <DeveloperPage slug={slugString} page={page}/>
         </>
     );
 }

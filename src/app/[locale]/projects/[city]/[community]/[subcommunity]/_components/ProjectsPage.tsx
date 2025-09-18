@@ -42,7 +42,7 @@ export default function ProjectsPage({
             const res = await fetch(`/api/getprojectslist?subcommunity=${dataid}&page=${page}`);
             const result = await res.json();
             setAllData(result.result);
-            setTotalPage(result.total);
+            setTotalPage(Math.ceil(Number(result.total) / 10));
         } catch (error) {
             console.error("API fetch failed", error);
         } finally {
