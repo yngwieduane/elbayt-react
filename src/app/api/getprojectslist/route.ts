@@ -3,7 +3,11 @@ import { NextRequest } from 'next/server';
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
     const developerid = searchParams.get('developerid') || '';
-    const apiurl = `https://admin.elbayt.com/api/getprojects.php?developerid=${developerid}`;
+    const city = searchParams.get('city') || '';
+    const community = searchParams.get('community') || '';
+    const subcommunity = searchParams.get('subcommunity') || '';
+    const page = searchParams.get('page') || '';
+    const apiurl = `https://admin.elbayt.com/api/getprojects.php?developerid=${developerid}&city=${city}&community=${community}&subcommunity=${subcommunity}&page=${page}`;
     console.log('Fetching getproperties data...'+developerid);
     const response = await fetch(
         apiurl,

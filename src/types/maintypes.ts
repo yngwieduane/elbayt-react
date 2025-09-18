@@ -323,3 +323,28 @@ export interface UnitListing {
     sold: string;
     name: string | null;
 };
+
+
+
+export interface City {
+    id: string;
+    create_dt: string;
+    modify_dt: string;
+    modify_id: string;
+    name: string;
+    name_ar: string;
+    country: string;
+    module: string;
+    status: string;
+    youtube: string;
+    tours: string;
+    useful_link: string;
+    coords: string;
+    coords_map_searchbox: string;
+    youtube_multi: string;
+    tours_multi: string;
+    useful_link_multi: string;
+    description: string;
+    description_ar: string;
+    description_ru: string;
+};

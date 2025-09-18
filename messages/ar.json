@@ -14,7 +14,8 @@
     "Townhouse": "Townhouse",
     "Twinhouse": "Twinhouse",
     "Penthouse": "Penthouse",
-    "Duplex": "Duplex"
+    "Duplex": "Duplex",
+    "Studio": "Studio"
   },
   "DevelopersPage": {
     "Apartment": "Apartment",
