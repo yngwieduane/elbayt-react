@@ -51,7 +51,7 @@ export default async function RealEstatePage({
                             <RealEstateCard page={currentPage}/>
                         </div>
                         <div className="hidden md:flex mt-16 space-y-10 lg:mt-2 lg:space-y-5 mainsidebar">
-                            <InquiryForm hideFeedbackButton="true"/>
+                            <InquiryForm hideFeedbackButton={true}/>
                         </div>
                     </div>
                 </div>
