@@ -24,5 +24,13 @@
     "Townhouse": "Townhouse",
     "Twinhouse": "Twinhouse",
     "Penthouse": "Penthouse"
+  },
+  "RealEstatePage": {
+    "Apartment": "Apartment",
+    "Villa": "Villa",
+    "Chalet": "Chalet",
+    "Townhouse": "Townhouse",
+    "Twinhouse": "Twinhouse",
+    "Penthouse": "Penthouse"
   }
 }

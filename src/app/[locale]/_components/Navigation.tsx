@@ -18,7 +18,7 @@ const navigation = [
     { name: 'Developers', href: '/developers' },
     { name: 'Interactive Map', href: '#' },
     { name: 'Neighborhood', href: '#' },
-    { name: 'Egypt Real Estate', href: '#' },
+    { name: 'Egypt Real Estate', href: '/real-estate' },
     { name: 'List My Property', href: '#' },
     { name: 'FAQs', href: '#' },
     { name: 'Offers', href: '#' },
