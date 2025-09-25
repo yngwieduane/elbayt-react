@@ -4,6 +4,8 @@ import { Developer } from "@/types/maintypes";
 import { Link } from "@/i18n/navigation";
 import { useFormatter } from "next-intl";
 import { Skeleton } from "@/app/[locale]/_components/tools/Skeleton";
+import PropertyBox from "./PropertyBox";
+import PropertyBoxWithParag from "./PropertyBoxWithParag";
 
 export default function MarketingPage({
     slug
@@ -50,7 +52,6 @@ export default function MarketingPage({
                         {data.map((post:any,index:any) => { 
                             const title = post.name;
                             const description = post.description;
-                            const href = `/real-estate/${post.custom_url}`;
                             const youtube = post.youtube_url;
                             const image = `https://admin.elbayt.com/files/image/id/${post.document_id}/checksum/${post.checksum}/${post.docuname}`;
 
@@ -69,6 +70,12 @@ export default function MarketingPage({
                                         <iframe src={youtube} className="w-full h-[200px] md:h-[700px]" />
                                     </div>
                                     ) : ("")}
+                                    <div className="my-10 py-10">
+                                        <PropertyBox property={post.property_id} />
+                                    </div>
+                                    <div className="my-10 py-10">
+                                        <PropertyBoxWithParag property={post.property_id} />
+                                    </div>
                                 </article>
                             )
                         })}
