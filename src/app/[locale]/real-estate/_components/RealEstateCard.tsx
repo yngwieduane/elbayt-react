@@ -42,8 +42,7 @@ export default function RealEstateCard({
         fetchData();
     }, [page]);
     return (
-        <div className="grid grid-cols-1 gap-5">
-            <Pagination totalPages={totalPage} />
+        <div className="grid grid-cols-1 gap-5 ">
             {isLoading ? (
                 <>
                     <Skeleton/>
@@ -111,6 +110,7 @@ export default function RealEstateCard({
             ) : (
                 <></>
             )}
+            <Pagination totalPages={totalPage} />
         </div>
     );
 };

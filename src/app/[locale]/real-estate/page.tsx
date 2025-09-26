@@ -44,13 +44,14 @@ export default async function RealEstatePage({
                 <Breadcrumb/>
             </div>
             <div className="mx-auto container px-6 lg:px-8 mt-5 grid grid-cols-1 gap-4 ">
-                <h1 className='text-3xl my-5'>Real Estate</h1>
+                <h1 className='text-3xl px-6 lg:px-8'>Real Estate</h1>
                 <div className="mx-auto container px-6 lg:px-8 mt-5">
                     <div className="grid grid-cols-4 gap-4 mainuppper">
                         <div className="col-span-4 md:col-span-3">
                             <RealEstateCard page={currentPage}/>
                         </div>
-                        <div className="hidden md:flex mt-16 space-y-10 lg:mt-2 lg:space-y-5 mainsidebar">
+                        <div className="hidden md:flex md:flex-col  mainsidebar border border-gray-300 rounded-lg">
+                            <h3 className="text-xl px-5 pt-5">Inquire now</h3>
                             <InquiryForm hideFeedbackButton={true}/>
                         </div>
                     </div>
