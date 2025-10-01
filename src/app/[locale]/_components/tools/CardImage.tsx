@@ -1,7 +1,10 @@
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
+import slugify from "react-slugify";
 
 export default function CardImage(props:any) {
+    const mt = useTranslations('MainTranslation');
     return (
         <Link href={props.href} className="group">
             <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow-sm group-hover:bg-ebGreen">
@@ -15,7 +18,7 @@ export default function CardImage(props:any) {
                     />
                 </div>
                 <div className="px-2 py-4 text-sm text-center group-hover:text-white">
-                    {props.name}
+                    {mt(slugify(props.name, { delimiter: '_' }))}
                 </div>
             </div>
         </Link>

@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import CardImage from "./tools/CardImage";
 import { Skeleton } from "./tools/Skeleton";
 import { Communities } from "@/types/maintypes";
+import { useTranslations } from "next-intl";
 
 export default function PopularCommunity(props:any){
     const [data, setData] = useState<Communities[]>([]);
     const [isLoading, setLoading] = useState(true);
+    const mt = useTranslations('MainTranslation');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,7 +35,7 @@ export default function PopularCommunity(props:any){
     }, []);
     return (
         <>
-        <h1 className='text-2xl text-center my-5'>Popular Communities</h1>
+        <h1 className='text-2xl text-center my-5'>{mt('popular_communities')}</h1>
         <div className={props.className}>
             <ul className="flex flex-nowrap space-x-4">
                 {isLoading ? (

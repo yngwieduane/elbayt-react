@@ -2,9 +2,11 @@
 
 import { Link } from '@/i18n/navigation';
 import { SiFacebook, SiInstagram, SiX, SiYoutube } from '@icons-pack/react-simple-icons';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 export default function Footer() {
+    const mt = useTranslations('MainTranslation');
 return (
     <footer className="bg-[#007770] text-white px-6 md:px-16 py-10">
         <div className="justify-between py-10">
@@ -18,13 +20,13 @@ return (
                         <a href="#" target="_blank"><SiYoutube size={20}/></a>
                     </div>
                     <div className="text-sm space-x-2">
-                        <Link href="/about">About Us</Link>
+                        <Link href="/about">{mt('about_us')}</Link>
                         <span>|</span>
-                        <Link href="/privacy">Privacy</Link>
+                        <Link href="/privacy">{mt('privacy')}</Link>
                         <span>|</span>
-                        <Link href="/terms">Terms of Use</Link>
+                        <Link href="/terms">{mt('terms_of_use')}</Link>
                     </div>
-                    <p className="text-sm">All Rights Reserved.</p>
+                    <p className="text-sm">{mt('all_rights_reserved')}</p>
                     <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
                         <Image
                         width={200}
@@ -36,39 +38,39 @@ return (
                     </a>
                 </div>
                 <div>
-                    <h3 className="font-semibold mb-5">Explore</h3>
+                    <h3 className="font-semibold mb-5">{mt('explore')}</h3>
                     <ul className="space-y-5">
-                        <li><Link href="/projects">Projects</Link></li>
-                        <li><Link href="/developers">Developers</Link></li>
-                        <li><Link href="/interactive-map">Interactive Map</Link></li>
-                        <li><Link href="/neighborhoods">Neighborhood</Link></li>
+                        <li><Link href="/projects">{mt('projects')}</Link></li>
+                        <li><Link href="/developers">{mt('developers')}</Link></li>
+                        <li><Link href="/interactive-map">{mt('interactive_map')}</Link></li>
+                        <li><Link href="/neighborhoods">{mt('neighborhood')}</Link></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 className="font-semibold mb-5">Residential</h3>
+                    <h3 className="font-semibold mb-5">{mt('residential')}</h3>
                     <ul className="space-y-5">
-                    <li><Link href="/apartment">Apartment</Link></li>
-                    <li><Link href="/villa">Villa</Link></li>
-                    <li><Link href="/townhouse">Townhouse</Link></li>
-                    <li><Link href="/duplex">Duplex</Link></li>
+                    <li><Link href="/apartment">{mt('apartment')}</Link></li>
+                    <li><Link href="/villa">{mt('villa')}</Link></li>
+                    <li><Link href="/townhouse">{mt('townhouse')}</Link></li>
+                    <li><Link href="/duplex">{mt('duplex')}</Link></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 className="font-semibold mb-5">New Cities Projects</h3>
+                    <h3 className="font-semibold mb-5">{mt('new_cities_projects')}</h3>
                     <ul className="space-y-5">
-                    <li><Link href="/new-cairo">New Cairo</Link></li>
-                    <li><Link href="/6th-october">6th October</Link></li>
-                    <li><Link href="/new-capital">New Capital</Link></li>
-                    <li><Link href="/sheikh-zayed">Sheikh Zayed</Link></li>
+                    <li><Link href="/new-cairo">{mt('new_cairo')}</Link></li>
+                    <li><Link href="/6th-october">{mt('6th_october')}</Link></li>
+                    <li><Link href="/new-capital">{mt('new_capital')}</Link></li>
+                    <li><Link href="/sheikh-zayed">{mt('sheikh_zayed')}</Link></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 className="font-semibold mb-5">Shore Line Projects</h3>
+                    <h3 className="font-semibold mb-5">{mt('shore_line_projects')}</h3>
                     <ul className="space-y-5">
-                    <li><Link href="/north-coast">North Coast</Link></li>
-                    <li><Link href="/hurghada">Hurghada</Link></li>
-                    <li><Link href="/sokhna">Sokhna</Link></li>
-                    <li><Link href="/ras-sudr">Ras Sudr</Link></li>
+                    <li><Link href="/north-coast">{mt('north_coast')}</Link></li>
+                    <li><Link href="/hurghada">{mt('hurghada')}</Link></li>
+                    <li><Link href="/sokhna">{mt('sokhna')}</Link></li>
+                    <li><Link href="/ras-sudr">{mt('ras_sudr')}</Link></li>
                     </ul>
                 </div>
             </div>
@@ -76,9 +78,9 @@ return (
 
         {/* Bottom Text */}
         <div className="mt-8 border-t border-white/30 pt-4 text-sm flex flex-col md:flex-row justify-between">
-            <span className="font-bold">Commercial Registration No 105300600191786</span>
-            <span className="font-bold text-center md:text-right">Smart solutions for Real Estate brokerage</span>
-            <span className="font-bold">Tax card: 697262103</span>
+            <span className="font-bold">{mt('commercial_registration_no_105300600191786')}</span>
+            <span className="font-bold text-center md:text-right">{mt('smart_solutions_for_real_estate_brokerage')}</span>
+            <span className="font-bold">{mt('tax_card_697262103')}</span>
         </div>
     </footer>
 );
