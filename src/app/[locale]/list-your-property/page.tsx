@@ -35,7 +35,7 @@ export default function ListYourProperty() {
                 <p>If you are an investor, homeowner, or seller wishing to sell property in Egypt, finding the right exposure is critical. At Elbayt.com, we make it easy and assist you in linking with serious buyers promptly and effectively. With a reliable platform that deals only with developers and qualified leads, listing your property on Elbayt provides you with the competitive advantage you need in Egypt&apos;s expanding real estate market.</p>
                 <Image className="aspect-3/2 w-full h-[300px] rounded-lg object-cover outline-1 -outline-offset-1 outline-black/5 dark:outline-white/10" src="/list-your-property-elbayt.jpg" alt="List Your Property" width="800" height="300"/>
                 <h2 className='text-3xl my-5'>Why List Your Property with Elbayt?</h2>
-                <p>Whether you are selling a villa in New Cairo or an apartment in North Coast, Elbayt provides a hassle-free and professional listing experience designed to meet the needs of today's market.</p>
+                <p>Whether you are selling a villa in New Cairo or an apartment in North Coast, Elbayt provides a hassle-free and professional listing experience designed to meet the needs of today&apos;s market.</p>
                 <p>Benefits of Listing with Elbayt:</p>
                 <ul className="flex flex-wrap ms-5 list-disc">
                     <li>Expose Your Property to Thousands of Actively Searching Buyers:  Your property will be showcased in front of a high-intent audience that is already searching for homes in Egypt.</li>
