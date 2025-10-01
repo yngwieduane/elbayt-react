@@ -11,17 +11,17 @@ import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
 
 const navigation = [
-    { name: 'Communities', href: '#' },
-    { name: 'Residential', href: '#' },
-    { name: 'Commercial', href: '#' },
+    { name: 'Communities', href: '/projects' },
+    // { name: 'Residential', href: '#' },
+    // { name: 'Commercial', href: '#' },
     { name: 'Units', href: '/units' },
     { name: 'Developers', href: '/developers' },
-    { name: 'Interactive Map', href: '#' },
-    { name: 'Neighborhood', href: '#' },
+    // { name: 'Interactive Map', href: '#' },
+    // { name: 'Neighborhood', href: '#' },
     { name: 'Egypt Real Estate', href: '/real-estate' },
-    { name: 'List My Property', href: '#' },
-    { name: 'FAQs', href: '#' },
-    { name: 'Offers', href: '#' },
+    { name: 'List My Property', href: '/list-your-property' },
+    // { name: 'FAQs', href: '#' },
+    // { name: 'Offers', href: '#' },
 ]
 
 export default function Navigation() {

@@ -15,7 +15,10 @@
     "Twinhouse": "Twinhouse",
     "Penthouse": "Penthouse",
     "Duplex": "Duplex",
-    "Studio": "Studio"
+    "Studio": "Studio",
+    "Office Space": "Office Space",
+    "Retail Space": "Retail Space",
+    "Clinic": "Clinic"
   },
   "DevelopersPage": {
     "Apartment": "Apartment",

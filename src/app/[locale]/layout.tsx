@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import Footer from './_components/Footer';
 import "../globals.css";
 import { Poppins } from "next/font/google";
+import { GoogleTagManager } from '@next/third-parties/google';
  
 export const metadata: Metadata = {
     title: "Best Real Estate Website in Egypt | elbayt.com",
@@ -33,6 +34,7 @@ export default async function LocaleLayout({
  
   return (
     <html lang={locale}>
+      <GoogleTagManager gtmId="GTM-WPBGXQL" />
       <body className={poppins.className}>
         <NextIntlClientProvider>
           <Navigation/>

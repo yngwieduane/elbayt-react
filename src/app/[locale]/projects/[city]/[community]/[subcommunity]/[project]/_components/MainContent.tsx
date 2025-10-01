@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import MainFacts from "./MainFacts";
 import FloorPlans from "./FloorPlans";
 import MapComponent from "@/app/[locale]/_components/functions/MapComponent";
+import SimilarProjects from "@/app/[locale]/_components/SimilarProjects";
 export default function MainContent(props:any) {
     const project = props.data;
     const t = useTranslations('PropertyPage');
@@ -70,10 +71,18 @@ export default function MainContent(props:any) {
                     <a data-fancybox="locationplan" href={locationPlan}><Image src={locationPlan} alt="Map" width={1000} height={500} className="w-full"/></a>
                 </div>
                 ) : ("")}
+                <div className="my-5" ref={fancyboxRef1}>
+                    <h2 className="text-2xl mb-5 text-center">Similar Projects in {project?.main?.community_name} </h2>
+                    <SimilarProjects developerid="" communityid={project?.main?.community_id} />
+                </div>
+                <div className="my-5" ref={fancyboxRef1}>
+                    <h2 className="text-2xl mb-5 text-center">Projects by {project?.main?.developer_name} </h2>
+                    <SimilarProjects communityid="" developerid={project?.main?.developer_id} />
+                </div>
 
             </div>
 
-            {/* <h2 className="text-2xl">Similar Projects in {project?.main?.community_name}</h2>
+            {/* 
             <h2 className="text-2xl">Projects by {project?.main?.developer_name}</h2>
             <h2 className="text-2xl">{project?.name} Faqs</h2> */}
         </>

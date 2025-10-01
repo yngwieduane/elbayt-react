@@ -1,6 +1,24 @@
 import {useTranslations} from 'next-intl';
 import DeveloperCard from '../_components/DeveloperCard';
 import PopularCommunity from '../_components/PopularCommunity';
+import { Metadata } from 'next';
+
+type Props = {
+  params: Promise<{ city:string;community:string;subcommunity:string;project:string }>
+} 
+export async function generateMetadata(
+    { params }: Props,
+    ): Promise<Metadata> {
+    // read route params
+    const {city, community, subcommunity, project} = await params;
+
+    const metatitle = "Real Estate Developers in Egypt | Egypt Real Estate" ;
+    const metadesc = "Real Estate Developers in Egypt. Properties for sale in Egypt.";
+    return {
+        title: metatitle,
+        description: metadesc,
+    }
+}
 
 export default function DevelopersPage() {
     const t = useTranslations('DevelopersPage');

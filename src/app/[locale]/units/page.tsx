@@ -1,5 +1,24 @@
+import { Metadata } from "next";
 import UnitsContent from "./_components/UnitsContent";
 
+
+type Props = {
+  params: Promise<{ city:string;community:string;subcommunity:string;project:string }>
+} 
+
+export async function generateMetadata(
+    { params }: Props,
+    ): Promise<Metadata> {
+    // read route params
+    const {city, community, subcommunity, project} = await params;
+
+    const metatitle = "Properties in Egypt Real Estate Projects | Egypt Real Estate" ;
+    const metadesc = "Properties in Real estate in Egypt. Properties for sale in Egypt.";
+    return {
+        title: metatitle,
+        description: metadesc,
+    }
+}
 
 export default async function Units(props: {
   searchParams?: Promise<{

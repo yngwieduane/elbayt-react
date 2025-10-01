@@ -14,8 +14,8 @@ export async function generateMetadata(
     // read route params
     const {city, community, subcommunity, project} = await params;
 
-    const metatitle = "Egypt Real Estate Projects | Egypt Real Estate" ;
-    const metadesc = "Real estate in Egypt. Properties for sale in Egypt.";
+    const metatitle = unslugify(subcommunity) + " " + unslugify(community) + " Egypt Real Estate Projects | Egypt Real Estate" ;
+    const metadesc = unslugify(subcommunity) + " " + unslugify(community) + " Real estate in Egypt. Properties for sale in Egypt.";
     return {
         title: metatitle,
         description: metadesc,

@@ -27,8 +27,16 @@ export async function POST(request: NextRequest) {
                 <p><strong>Message:</strong> ${message}</p>
                 <p><strong>Form Submitted From:</strong> ${currentUrl}</p>
                 `,
-                receiver: "elbaytae@gmail.com,elbayteg@gmail.com",
+                receiver: "elbaytae@gmail.com,elbayteg@gmail.com,ydgb0714@gmail.com",
                 subject: `New Lead - ${firstName} ${lastName} - ${phone} `,
+                firstname: `${firstName}`,
+                lastname: `${lastName}`,
+                phone: `${phone}`,
+                email: `${email}`,
+                message: `${message}`,
+                currentUrl: `${currentUrl}`,
+                property: "General",
+                project_title: "Project Title",
                 filename: "",
                 filedata: "",
             }),

@@ -14,8 +14,11 @@ export async function generateMetadata(
 
     const slugString = Array.isArray(slug) ? slug[0] : slug || "";
 
+    const metatitle = slugString + " | Egypt Real Estate" ;
+    const metadesc = slugString + " | Real Estate Developers in Egypt. Properties for sale in Egypt.";
     return {
-        title: slugString,
+        title: metatitle,
+        description: metadesc,
     }
 }
 
