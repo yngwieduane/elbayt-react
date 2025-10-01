@@ -21,13 +21,14 @@ export default function ProjectsCard({
     const [isLoading, setLoading] = useState(true);
     const t = useTranslations('PropertyPage');
 
+    const devid = developerid || '';
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setLoading(true);
 
                 const response = await fetch(
-                    `/api/getprojectslist/?developerid=${developerid}&page=${page}`
+                    `/api/getprojectslist/?developerid=${devid}&page=${page}`
                 );
 
                 if (!response.ok) {

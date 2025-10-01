@@ -42,7 +42,7 @@ export default function ListYourProperty() {
                     <li>Zero Commission on Listings:  Listing your property is 100% free. No hidden fees. Just real exposure.</li>
                     <li>Optimized Property Ads for Search Engines:  We make sure your listing is SEO-friendly so it ranks well on Google and gets seen by the right people.</li>
                     <li>Professional Marketing Support:  With our in-house content and media team, your property gets high-quality photos, descriptions, and digital visibility.</li>
-                    <li>Egypt's Most Trusted Real Estate Name:  Elbayt is one of the leading platforms trusted by buyers, developers, and agents in Egypt.</li>
+                    <li>Egypt&apos;s Most Trusted Real Estate Name:  Elbayt is one of the leading platforms trusted by buyers, developers, and agents in Egypt.</li>
                 </ul>
             </div>
             <ListYourPropertyForm />

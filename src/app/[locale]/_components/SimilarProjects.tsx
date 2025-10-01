@@ -8,13 +8,16 @@ import slugify from "react-slugify";
 export default function SimilarProjects(props:any){
     const [data, setData] = useState<ProjectDetails[]>([]);
     const [isLoading, setLoading] = useState(true);
+
+    const communityid = props.communityid || '';
+    const developerid = props.developerid || '';
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setLoading(true);
 
                 const response = await fetch(
-                    `/api/getprojectslist?community=${props.communityid}&community=${props.developerid}&page=1`
+                    `/api/getprojectslist?community=${communityid}&community=${developerid}&page=1`
                 );
 
                 if (!response.ok) {

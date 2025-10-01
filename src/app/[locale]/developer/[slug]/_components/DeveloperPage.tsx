@@ -12,13 +12,14 @@ export default function DeveloperPage(props: any) {
     const [data, setData] = useState<Developer[]>([]);
     const [isLoading, setLoading] = useState(true);
 
+    const slug = props.slug || '';
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setLoading(true);
 
                 const response = await fetch(
-                    `/api/getdeveloper/?id=${props.slug}`
+                    `/api/getdeveloper/?id=${slug}`
                 );
 
                 if (!response.ok) {

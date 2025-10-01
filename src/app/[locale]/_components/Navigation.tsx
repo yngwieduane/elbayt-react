@@ -42,7 +42,7 @@ export default function Navigation() {
         <header className="bg-white">
             <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
                 <div className="flex lg:flex-1">
-                <a href="/" className="-m-1.5 p-1.5">
+                <Link href="/" className="-m-1.5 p-1.5">
                     <span className="sr-only">elbayt.com</span>
                     <Image
                     alt=""
@@ -58,7 +58,7 @@ export default function Navigation() {
                     height={200}
                     className="h-8 w-auto not-dark:hidden"
                     />
-                </a>
+                </Link>
                 </div>
                 <div className="flex lg:hidden">
                 <button
@@ -80,18 +80,18 @@ export default function Navigation() {
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4">
                     <LanguageSwitcher/>
-                    <a
+                    <Link
                         href='#'
                         className="px-3 py-1.5 rounded-lg border border-gray-400 bg-transparent hover:bg-gray-200 cursor-pointer"
                     >
                         <Phone size={20}/>
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href='#'
                         className="px-3 py-1.5 rounded-lg border border-[#25D366] bg-[#25D366] hover:opacity-50 cursor-pointer"
                     >
                         <SiWhatsapp color='#ffffff' size={20} />
-                    </a>
+                    </Link>
                     <button
                         type="button"
                         onClick={drawerHandler('menu', navigation)}
