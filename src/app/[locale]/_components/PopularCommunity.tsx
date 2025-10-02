@@ -37,7 +37,7 @@ export default function PopularCommunity(props:any){
         <>
         <h1 className='text-2xl text-center my-5'>{mt('popular_communities')}</h1>
         <div className={props.className}>
-            <ul className="flex flex-nowrap space-x-4">
+            <ul className="flex flex-nowrap space-x-4 md:justify-center overflow-auto">
                 {isLoading ? (
                     <>
                         <Skeleton/>

@@ -20,6 +20,30 @@ export interface Developer  {
     docuname: string,
     slug: string
 }
+
+export interface Offers {
+  name: string;
+  name_ar: string;
+  name_ru: string;
+  id: string;
+  custom_url: string;
+  property_id: string; // JSON string like ["840"]
+  description_en: string;
+  description_ar: string;
+  description_ru: string;
+  create_dt: string; // "YYYY-MM-DD HH:mm:ss"
+  youtube: string;   // looks like a flag ("1")
+  brochure: string;  // looks like a flag ("1")
+  location: string;  // looks like a flag ("1")
+  masterplan: string; // looks like a flag ("1")
+  locationplan: string; // looks like a flag ("1")
+  gallery: string;   // looks like a flag ("1")
+  post_date: string; // "YYYY-MM-DD HH:mm:ss"
+  document_id: string;
+  checksum: string;
+  docuname: string;
+}
+
 export interface Project  {
     projectID: string;
     propertyName: string; 

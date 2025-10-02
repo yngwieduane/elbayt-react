@@ -21,7 +21,7 @@ const navigation = [
     { name: 'Egypt Real Estate', href: '/real-estate' },
     { name: 'List My Property', href: '/list-your-property' },
     // { name: 'FAQs', href: '#' },
-    // { name: 'Offers', href: '#' },
+    { name: 'Offers', href: '/offers' },
 ]
 
 export default function Navigation() {

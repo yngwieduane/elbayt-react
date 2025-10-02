@@ -1,6 +1,5 @@
 import {useTranslations} from 'next-intl';
 import DeveloperCard from '../_components/DeveloperCard';
-import PopularCommunity from '../_components/PopularCommunity';
 import { Metadata } from 'next';
 
 type Props = {
@@ -34,7 +33,6 @@ export default function DevelopersPage() {
                 <p>Investing in real estate projects by Egypt&apos;s top developers offers high returns and stability for investors, with diverse portfolios and professional management ensuring efficiency and quality. For buyers, properties promise superior living spaces with world-class amenities in prime locations, providing both comfort and potential for long-term value appreciation. Trusted developers&apos; proven track records ensure peace of mind, making these projects ideal for securing investments and enjoying quality living experiences.</p>
                 <p>These developers are not merely constructing buildings but are actively shaping the future of Egypt&apos;s cities and communities. Through their vision, innovation, and commitment to excellence, they are driving economic growth, urban development, and social progress in the country. As the real estate market continues to evolve, these developers will undoubtedly remain at the forefront, shaping Egypt&apos;s built environment for years to come.</p>
             </div>
-            <PopularCommunity className="overflow-x-auto"/>
         </div>
     );
 }

@@ -1,20 +1,19 @@
 'use client'
 import { useState, useEffect } from "react";
-import { Developer } from "@/types/maintypes";
+import { Offers } from "@/types/maintypes";
 import { Link } from "@/i18n/navigation";
 import { useFormatter } from "next-intl";
 import { Skeleton } from "@/app/[locale]/_components/tools/Skeleton";
-import PropertyBox from "./PropertyBox";
-import PropertyBoxWithParag from "./PropertyBoxWithParag";
 import Image from "next/image";
-import PropertyTable from "./PropertyTable";
+import ProjectsButtons from "@/app/[locale]/_components/ProjectsButtons";
+import ProjectButtonWrap from "@/app/[locale]/_components/ProjectButtonWrap";
 
-export default function MarketingPage({
+export default function OfferSingle({
     slug
   }: {
     slug: string;
   }){
-    const [data, setData] = useState<Developer[]>([]);
+    const [data, setData] = useState<Offers[]>([]);
     const [isLoading, setLoading] = useState(true);
     const format = useFormatter();
 
@@ -24,7 +23,7 @@ export default function MarketingPage({
                 setLoading(true);
 
                 const response = await fetch(
-                    `/api/getrealestate/?page=1&slug=${slug}`
+                    `/api/getoffers/?page=1&slug=${slug}`
                 );
 
                 if (!response.ok) {
@@ -53,10 +52,11 @@ export default function MarketingPage({
                     <>
                         {data.map((post:any,index:any) => { 
                             const title = post.name;
-                            const description = post.description;
+                            const description = post.description_en;
                             const youtube = post.youtube_url;
                             const image = `https://admin.elbayt.com/files/image/id/${post.document_id}/checksum/${post.checksum}/${post.docuname}`;
 
+                            const properties = JSON.parse(post.property_id);
                             let HOdate;
                             if(post.create_dt){
                             HOdate = new Date(post.create_dt);
@@ -65,22 +65,13 @@ export default function MarketingPage({
                             HOdate = false;
                             }
                             return (
-                                <article className="" key={index}>
-                                    <Image src={image} alt={title} width={300} height={200} className="float-right rounded-2xl bg-gray-50 object-cover" />
-                                    <p className="whitespace-break-spaces">{description}</p>
-                                    {youtube !== '' ? (
-                                    <div className="my-5">
-                                        <iframe src={youtube} className="w-full h-[200px] md:h-[700px]" />
-                                    </div>
-                                    ) : ("")}
-                                    <div className="my-10 py-10">
-                                        <PropertyBox property={post.property_id} />
-                                    </div>
-                                    <div className="my-10 py-10">
-                                        <PropertyBoxWithParag property={post.property_id} />
-                                    </div>
-                                    <div className="my-10 py-10">
-                                        <PropertyTable property={post.property_id} />
+                                <article  key={index}>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center mb-5">
+                                        <Image src={image} alt="test" width={700} height={500}/>
+                                        <div>
+                                            <p className="whitespace-break-spaces">{description}</p>
+                                            <ProjectButtonWrap propertyid={properties[0]}/> 
+                                        </div>
                                     </div>
                                 </article>
                             )

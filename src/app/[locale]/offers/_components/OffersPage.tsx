@@ -1,19 +1,18 @@
 'use client'
 import { useState, useEffect } from "react";
-import { Developer } from "@/types/maintypes";
+import { Offers } from "@/types/maintypes";
 import { Skeleton } from "../../_components/tools/Skeleton";
 import CardImage from "../../_components/tools/CardImage";
 import { Link } from "@/i18n/navigation";
 import Pagination from "../../_components/tools/Pagination";
 import { useFormatter } from "next-intl";
-import Image from "next/image";
 
-export default function RealEstateCard({
+export default function OffersPage({
     page
   }: {
     page: number;
   }){
-    const [data, setData] = useState<Developer[]>([]);
+    const [data, setData] = useState<Offers[]>([]);
     const [totalPage, setTotalPage] = useState(0);
     const [isLoading, setLoading] = useState(true);
     const format = useFormatter();
@@ -24,7 +23,7 @@ export default function RealEstateCard({
                 setLoading(true);
 
                 const response = await fetch(
-                    `/api/getrealestate/?page=${page}`
+                    `/api/getoffers/?page=${page}`
                 );
 
                 if (!response.ok) {
@@ -58,7 +57,7 @@ export default function RealEstateCard({
                         {data.map((post:any,index:any) => { 
                             const title = post.name;
                             const description = post.description;
-                            const href = `/real-estate/${post.custom_url}`;
+                            const href = `/offers/${post.custom_url}`;
                             const image = `https://admin.elbayt.com/files/image/id/${post.document_id}/checksum/${post.checksum}/${post.docuname}`;
 
                             let HOdate;
@@ -71,12 +70,10 @@ export default function RealEstateCard({
                             return (
                                 <article key={index} className="relative isolate flex flex-col gap-5 lg:flex-row rounded-lg w-full border border-gray-300 p-2 items-center">
                                     <div className="relative w-full h-52 sm:aspect-2/1 lg:aspect-square lg:w-64 lg:shrink-0">
-                                        <Image
+                                        <img
                                         alt=""
                                         src={image}
                                         className="absolute inset-0 size-full rounded-2xl bg-gray-50 object-cover"
-                                        width={300}
-                                        height={300}
                                         />
                                         <div className="absolute inset-0 rounded-2xl ring-1 ring-gray-900/10 ring-inset" />
                                         <div className="absolute left-5 md:hidden bottom-5 z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">

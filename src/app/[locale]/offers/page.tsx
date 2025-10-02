@@ -1,8 +1,8 @@
 
 import type { Metadata } from 'next'
 import Breadcrumb from '../_components/tools/Breadcrumb';
-import RealEstateCard from './_components/RealEstateCard';
 import InquiryForm from '../_components/InquiryForm';
+import OffersPage from './_components/OffersPage';
 
 type Props = {
   params: Promise<{ city:string;community:string;subcommunity:string;project:string }>
@@ -14,15 +14,15 @@ export async function generateMetadata(
     // read route params
     const {city, community, subcommunity, project} = await params;
 
-    const metatitle = "Egypt Real Estate Projects | Egypt Real Estate" ;
-    const metadesc = "Real estate in Egypt. Properties for sale in Egypt.";
+    const metatitle = "Offers Egypt Real Estate Projects | Egypt Real Estate" ;
+    const metadesc = "Offers Real estate in Egypt. Properties for sale in Egypt.";
     return {
         title: metatitle,
         description: metadesc,
     }
 }
 
-export default async function RealEstatePage({
+export default async function Offers({
     params,
     searchParams
 }:{
@@ -43,11 +43,11 @@ export default async function RealEstatePage({
                 <Breadcrumb/>
             </div>
             <div className="mx-auto container px-6 lg:px-8 mt-5 grid grid-cols-1 gap-4 ">
-                <h1 className='text-3xl px-6 lg:px-8'>Real Estate</h1>
+                <h1 className='text-3xl px-6 lg:px-8'>Offers</h1>
                 <div className="mx-auto container px-6 lg:px-8 mt-5">
                     <div className="grid grid-cols-4 gap-4 mainuppper">
                         <div className="col-span-4 md:col-span-3">
-                            <RealEstateCard page={currentPage}/>
+                            <OffersPage page={currentPage}/>
                         </div>
                         <div className="hidden md:flex md:flex-col  mainsidebar border border-gray-300 rounded-lg">
                             <h3 className="text-xl px-5 pt-5">Inquire now</h3>

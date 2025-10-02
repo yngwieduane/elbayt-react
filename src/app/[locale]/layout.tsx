@@ -7,6 +7,7 @@ import Footer from './_components/Footer';
 import "../globals.css";
 import { Poppins } from "next/font/google";
 import { GoogleTagManager } from '@next/third-parties/google';
+import PopularCommunity from './_components/PopularCommunity';
  
 export const metadata: Metadata = {
     title: "Best Real Estate Website in Egypt | elbayt.com",
@@ -39,6 +40,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <Navigation/>
           {children}
+          <PopularCommunity className="overflow-x-auto mb-5"/>
           <Footer/>
         </NextIntlClientProvider>
       </body>

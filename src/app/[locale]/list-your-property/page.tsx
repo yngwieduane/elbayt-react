@@ -1,5 +1,4 @@
 import {useTranslations} from 'next-intl';
-import PopularCommunity from '../_components/PopularCommunity';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import ListYourPropertyForm from '../_components/ListYourPropertyForm';
@@ -46,7 +45,6 @@ export default function ListYourProperty() {
                 </ul>
             </div>
             <ListYourPropertyForm />
-            <PopularCommunity className="overflow-x-auto"/>
         </div>
         </>
     );
