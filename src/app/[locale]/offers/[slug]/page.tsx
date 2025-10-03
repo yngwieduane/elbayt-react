@@ -36,7 +36,6 @@ export default async function OfferSinglePage({
                 <Breadcrumb/>
             </div>
             <div className="mx-auto container px-6 lg:px-8 mt-5 grid grid-cols-1 gap-4 ">
-                <h1 className='text-center text-3xl my-5'>{unslugify(slug)}</h1>
                 <OfferSingle slug={slug} />
             </div>
         </>

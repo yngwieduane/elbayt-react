@@ -22,7 +22,7 @@ export default function ProjectsButtons(props:any) {
         console.log(event);
         setSetModal(event);
     };
-    const t = useTranslations('PropertyPage');
+    const mt = useTranslations('MainTranslation');
 
     const unimultitype = project?.property_type1;
     let typeTitle, locationPlan, floorplans, youtubevid, masterPlan, galleryExt, galleryInt, galleryFac, maintype;
@@ -30,7 +30,7 @@ export default function ProjectsButtons(props:any) {
         const jsonObject = JSON.parse(unimultitype);
         console.log(jsonObject);
         typeTitle = jsonObject
-            .map((type:any) => t(`${type}`))
+            .map((type:any) => mt(`${type}`))
             .join(', ');
     }
 
@@ -204,7 +204,7 @@ export default function ProjectsButtons(props:any) {
                         </div>
                         <div aria-hidden="true" className="w-full border-t border-gray-300 dark:border-white/15" />
                     </div>
-                    <button onClick={modalHandler('contactform', project?.name)} className="bg-ebGreen w-full text-white text-xl rounded px-5 py-2 cursor-pointer border border-bg-ebGreen hover:text-ebGreen hover:bg-ebLightGreen">Register Interest</button>
+                    <button onClick={modalHandler('contactform', project?.name)} className="bg-ebGreen w-full text-white text-xl rounded px-5 py-2 cursor-pointer border border-bg-ebGreen hover:text-ebGreen hover:bg-ebLightGreen">{mt("register_your_interest")}</button>
                 </div>
             </div>
             <Modal modalState={setModal} onModalUpdate={modalUpdate} content={popContent} data={popData}/>

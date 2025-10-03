@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Offers } from "@/types/maintypes";
 import { Link } from "@/i18n/navigation";
-import { useFormatter } from "next-intl";
+import { useFormatter, useLocale } from "next-intl";
 import { Skeleton } from "@/app/[locale]/_components/tools/Skeleton";
 import Image from "next/image";
 import ProjectsButtons from "@/app/[locale]/_components/ProjectsButtons";
@@ -16,6 +16,7 @@ export default function OfferSingle({
     const [data, setData] = useState<Offers[]>([]);
     const [isLoading, setLoading] = useState(true);
     const format = useFormatter();
+    const locale = useLocale();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -51,21 +52,39 @@ export default function OfferSingle({
                 {data.length > 0 && (
                     <>
                         {data.map((post:any,index:any) => { 
-                            const title = post.name;
-                            const description = post.description_en;
+                            let HOdate, description,title;
                             const youtube = post.youtube_url;
                             const image = `https://admin.elbayt.com/files/image/id/${post.document_id}/checksum/${post.checksum}/${post.docuname}`;
 
                             const properties = JSON.parse(post.property_id);
-                            let HOdate;
                             if(post.create_dt){
                             HOdate = new Date(post.create_dt);
                             HOdate = format.dateTime(HOdate, {year: 'numeric',month: 'short',day: 'numeric'});
                             }else{
                             HOdate = false;
                             }
+                            switch (locale) {
+                                case 'en':
+                                    description = post.description_en;
+                                    title = post.name;
+                                    break;
+                                case 'ar':
+                                    description = post.description_ar;
+                                    title = post.name_ar;
+                                    break;
+                                case 'ru':
+                                    description = post.description_ru;
+                                    title = post.name_ru;
+                                    break;
+                            
+                                default:
+                                    description = post.description_en;
+                                    title = post.name;
+                                    break;
+                            }
                             return (
                                 <article  key={index}>
+                                    <h1 className='text-center text-3xl my-5'>{title}</h1>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center mb-5">
                                         <Image src={image} alt="test" width={700} height={500}/>
                                         <div>
