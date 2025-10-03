@@ -8,7 +8,6 @@ import { ReactNode } from 'react';
 import slugify from 'react-slugify';
 
 type Props = {
-    children: ReactNode;
     params: Promise<{ locale: string;slug:string }>
 } 
 
