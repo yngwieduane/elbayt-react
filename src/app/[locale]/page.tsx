@@ -4,7 +4,6 @@ import CardImage from './_components/tools/CardImage';
 import Image from 'next/image';
 import CommunityCard from './_components/CommunityCard';
 import DeveloperCard from './_components/DeveloperCard';
-import PopularCommunity from './_components/PopularCommunity';
  
 const communities = [
     { name: 'New Cairo', href: '#', image: '#' },
@@ -38,7 +37,6 @@ export default function Homepage() {
                 <div className="col-span-3">{mt("aboutelbayt")}</div>
                 <div><Image className="w-full'" width={200} height={200} alt="elbayt.com" src="/elbayt-name-only.png"/></div>
             </div>
-            <PopularCommunity className="overflow-x-auto mb-5"/>
         </div>
     );
 }

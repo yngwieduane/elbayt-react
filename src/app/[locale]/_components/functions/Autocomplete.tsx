@@ -5,8 +5,10 @@ import { Search } from "lucide-react";
 import { Project } from "@/types/maintypes";
 import { Link } from "@/i18n/navigation";
 import slugify from "react-slugify";
+import { useTranslations } from "next-intl";
 
 export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
+    const mt = useTranslations('MainTranslation');
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<Project[]>([]);
     const [loading, setLoading] = useState(false);
@@ -58,7 +60,7 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
                     type="text"
                     id="propertyName"
                     name="propertyName"
-                    placeholder="Keyword Search Ex. North Coast,Emaar,The Waterway"
+                    placeholder={mt('keyword_search_ex_north_coast_emaar_the_waterway')}
                     onChange={handleInputChange}
                     autoComplete="off"
                     className="placeholder:text-sm  col-start-1 row-start-1 block w-full rounded-md bg-gray-50 md:bg-white py-1.5 pr-3 pl-10 text-lg text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:pl-9 placeholder:text-gray-500"

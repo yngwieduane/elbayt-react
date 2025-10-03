@@ -2,8 +2,11 @@
 
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
+import slugify from 'react-slugify';
 
 const Breadcrumb = () => {
+    const mt = useTranslations('MainTranslation');
     const pathname = usePathname();
     const pathSegments = pathname.split('/').filter((segment) => segment);
     pathSegments.shift();
@@ -12,7 +15,7 @@ const Breadcrumb = () => {
             <ul className="flex items-center space-x-2 text-gray-500 truncate">
                 <li>
                 <Link href="/" className="hover:text-ebGreen">
-                    Home
+                    {mt('home')}
                 </Link>
                 </li>
                 {pathSegments.map((segment, index) => {
@@ -22,12 +25,12 @@ const Breadcrumb = () => {
                     <li key={index} className="flex items-center space-x-2">
                     <span>/</span>
                     {isLast ? (
-                        <span className="text-gray-900 font-medium capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
-                        {segment.replaceAll('-', ' ')}
+                        <span className="text-gray-900 capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
+                        {mt(slugify(segment, { delimiter: '_' }))}
                         </span>
                     ) : (
                         <Link href={href} className="hover:text-ebGreen capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
-                        {segment.replaceAll('-', ' ')}
+                        {mt(slugify(segment, { delimiter: '_' }))}
                         </Link>
                     )}
                     </li>

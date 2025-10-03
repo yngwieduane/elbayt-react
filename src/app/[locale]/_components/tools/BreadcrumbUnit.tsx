@@ -28,7 +28,7 @@ const BreadcrumbUnit = () => {
                     <li key={index} className="flex items-center space-x-2">
                     <span>/</span>
                     {isLast ? (
-                        <span className="text-gray-900 font-medium capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
+                        <span className="text-gray-900 capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
                         {segment.replaceAll('-', ' ')}
                         </span>
                     ) : (

@@ -4,8 +4,10 @@ import { Fragment, useState } from 'react'
 import { Dialog, DialogPanel, DialogTitle, Transition } from '@headlessui/react'
 import { X } from 'lucide-react';
 import ListGroup from './ListGroup';
+import { useTranslations } from 'next-intl';
 
 export default function DrawerDetails(props:any) {
+    const mt = useTranslations('MainTranslation');
     let content,coordinates,images,details,video,title;
     const [open, setOpen] = useState(props.open);
 
@@ -16,13 +18,13 @@ export default function DrawerDetails(props:any) {
     switch (props.drawerTitle) {
         case 'details':
             details = props.drawerContent?? "";
-            title = "Menu";
+            title = mt("menu");
             content = <ListGroup data={details} />;
             break;
     
         default:
             details = props.drawerContent?? "";
-            title = "Menu";
+            title = mt("menu");
             content = <ListGroup data={details} />;
             break;
     }
