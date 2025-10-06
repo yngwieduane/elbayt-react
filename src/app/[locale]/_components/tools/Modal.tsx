@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import MapComponent from '../functions/MapComponent';
 import InquiryForm from '../InquiryForm';
+import { X } from 'lucide-react';
 
 export default function Modal({ modalState, onModalUpdate ,content, data }: { modalState:any;onModalUpdate:any;content: any;data: any }) {
     const [open, setOpen] = useState(modalState);
@@ -60,6 +61,17 @@ export default function Modal({ modalState, onModalUpdate ,content, data }: { mo
                         className={`relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full ${popsize} sm:p-6 data-closed:sm:translate-y-0 data-closed:sm:scale-95`}
                     
                         >   
+                            <div className="ml-3 flex h-7 items-center justify-end">
+                                <button
+                                type="button"
+                                onClick={onCloseModal}
+                                className="relative rounded-md text-gray-400 hover:text-gray-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                >
+                                <span className="absolute -inset-2.5" />
+                                <span className="sr-only">Close panel</span>
+                                <X size={30} />
+                                </button>
+                            </div>
                             <DialogTitle as="h3" className={`text-xl font-semibold text-gray-900 text-center mb-5 ${textprop}`}>
                                 {title}
                             </DialogTitle>

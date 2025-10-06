@@ -57,7 +57,7 @@ export default function ProjectCardWithParag(props:any){
                 <p>{mt('the_starting_price_of_properties_in')} {title} {mt('is')} <button onClick={modalHandler('contactform', title)} className="cursor-pointer underline">{mt('ask_for_price')}</button> {mt('with_a_price_per_sqm_of')} <button onClick={modalHandler('contactform', title)} className="cursor-pointer underline">{mt('ask_for_price')}</button>. {mt('the_downpayment_for_a_property_in')} {title} {mt('is_starting_at')} <button onClick={modalHandler('contactform', title)} className="cursor-pointer underline">{mt('ask_for_price')}</button> {mt('or')} <button onClick={modalHandler('contactform', title)} className="cursor-pointer underline">{mt('ask_for_price')}</button>. {mt('the_number_of_installments_for_a_property_in')} {title} {mt('is')}. {mt('the_monthly_payment_of_a_property_in')} {title} <button onClick={modalHandler('contactform', title)} className="cursor-pointer underline">{mt('ask_for_price')}</button></p>
             </div>
             <div className="order-first md:order-last">
-                <Link href={href}><Image src={image} alt={`Image of ${title}`} width={200} height={300} className="w-full h-50 object-cover rounded-xl" /></Link>
+                <Link href={href}><Image src={image} alt={`Image of ${title}`} width={200} height={300} className="w-full h-50 object-cover object-center rounded-xl" /></Link>
             </div>
         </div>
         <Modal modalState={setModal} onModalUpdate={modalUpdate} content={popContent} data={popData}/>

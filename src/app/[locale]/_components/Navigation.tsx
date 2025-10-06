@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Menu, MenuIcon, Phone, X } from 'lucide-react'
 import AutocompleteSearch from './functions/Autocomplete'
@@ -8,7 +8,7 @@ import LanguageSwitcher from './functions/LanguageSwitcher'
 import Drawers from './tools/Drawers'
 import { SiWhatsapp } from '@icons-pack/react-simple-icons'
 import Image from 'next/image'
-import { Link } from '@/i18n/navigation'
+import { Link, usePathname } from '@/i18n/navigation'
 
 const navigation = [
     { name: 'Communities', href: '/projects' },
@@ -37,6 +37,16 @@ export default function Navigation() {
         setDwDataTitle(content);
         setShowDrawer(true);
     }
+    const pathname = usePathname();
+    const [fullUrl, setFullUrl] = useState('');
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+        setFullUrl(`${window.location.origin}${pathname}`);
+        }
+    }, [pathname]);
+
+    const phoneNumber = process.env.NEXT_PUBLIC_CALLNUMBER;
+    const wappNumber = process.env.NEXT_PUBLIC_WAPPNUMBER;
 
     return (
         <header className="bg-white">
@@ -81,13 +91,14 @@ export default function Navigation() {
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4">
                     <LanguageSwitcher/>
                     <Link
-                        href='#'
+                        href={`tel:${phoneNumber}`}
                         className="px-3 py-1.5 rounded-lg border border-gray-400 bg-transparent hover:bg-gray-200 cursor-pointer"
                     >
                         <Phone size={20}/>
                     </Link>
                     <Link
-                        href='#'
+                        target='_blank'
+                        href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${fullUrl}`}
                         className="px-3 py-1.5 rounded-lg border border-[#25D366] bg-[#25D366] hover:opacity-50 cursor-pointer"
                     >
                         <SiWhatsapp color='#ffffff' size={20} />

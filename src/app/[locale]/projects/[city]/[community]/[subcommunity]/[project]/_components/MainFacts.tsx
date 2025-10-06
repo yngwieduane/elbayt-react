@@ -1,14 +1,21 @@
 'use client'
 import Modal from "@/app/[locale]/_components/tools/Modal";
 import useFancybox from "@/app/[locale]/_components/tools/useFancybox";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { Button } from "@headlessui/react";
 import { Compass, FileText, GalleryThumbnails, Info, MapIcon, MapPin, PaperclipIcon, PencilIcon, RectangleGoggles, RectangleGogglesIcon, Scan, Video } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import slugify from "react-slugify";
 export default function MainFacts(props:any) {
+    const pathname = usePathname();
+    const [fullUrl, setFullUrl] = useState('');
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+        setFullUrl(`${window.location.origin}${pathname}`);
+        }
+    }, [pathname]);
     const project = props.data;
     const [setModal, setSetModal] = useState(false);
     const [popContent, setPopContent] = useState('map');
@@ -24,7 +31,7 @@ export default function MainFacts(props:any) {
         console.log(event);
         setSetModal(event);
     };
-    const t = useTranslations('PropertyPage');
+    const mt = useTranslations('MainTranslation');
 
     const unimultitype = project?.property_type1;
     let typeTitle, locationPlan, floorplans, youtubevid, masterPlan, galleryExt, galleryInt, galleryFac, maintype;
@@ -32,7 +39,7 @@ export default function MainFacts(props:any) {
         const jsonObject = JSON.parse(unimultitype);
         console.log(jsonObject);
         typeTitle = jsonObject
-            .map((type:any) => t(`${type}`))
+            .map((type:any) => mt(slugify(type, { delimiter: '_' })))
             .join(', ');
     }
 
@@ -86,11 +93,14 @@ export default function MainFacts(props:any) {
         maintype = '';
     }
 
+    const projectName = mt(slugify(project?.name, { delimiter: '_' }));
+    const phoneNumber = process.env.NEXT_PUBLIC_CALLNUMBER;
+    const wappNumber = process.env.NEXT_PUBLIC_WAPPNUMBER;
     return (
         <>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-                <h1 className="text-lg md:text-3xl">{project?.name}: {typeTitle} in {project.main?.community_name} Egypt</h1>
-                <div className="text-end" id={project.main?.projectID}><button onClick={modalHandler('contactform', project?.name)} className="bg-ebGreen text-white text-xl rounded px-5 py-2 cursor-pointer border border-bg-ebGreen hover:text-ebGreen hover:bg-ebLightGreen">Ask For Price</button></div>
+                <h1 className="text-lg md:text-3xl">{projectName}: {typeTitle} {mt("in")} {mt(slugify(project?.main?.community_name, { delimiter: '_' }))} {mt("egypt")}</h1>
+                <div className="text-end" id={project.main?.projectID}><button onClick={modalHandler('contactform', project?.name)} className="bg-ebGreen text-white text-xl rounded px-5 py-2 cursor-pointer border border-bg-ebGreen hover:text-ebGreen hover:bg-ebLightGreen">{mt("ask_for_price")}</button></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5">
                 <div className="relative">
@@ -224,26 +234,26 @@ export default function MainFacts(props:any) {
                     <div className="grid grid-cols-2 md:grid-cols-1 gap-5 p-5 md:p-10">
                         {project.area_range_min !== '' ? (
                             <div className="grid text-md md:text-xl/6">
-                                <p className="text-lg font-light">Area Range</p>
-                                <p>{project.area_range_min} sqm to {project.area_range_max} sqm</p>
+                                <p className="text-lg font-light">{mt("area_range")}</p>
+                                <p>{project.area_range_min} {mt("sqm")} ~ {project.area_range_max} {mt("sqm")}</p>
                             </div>
                         ) : ("")}
                         <div className="grid text-md md:text-2xl">
-                            <p className="text-lg font-light">Unit Types</p>
+                            <p className="text-lg font-light">{mt("unit_types")}</p>
                             <p>{typeTitle}</p>
                         </div>
                         <div className="grid text-md md:text-2xl">
-                            <p className="text-lg font-light">Project Type</p>
+                            <p className="text-lg font-light">{mt("project_type")}</p>
                             <p>{maintype}</p>
                         </div>
                         <div className="grid text-md md:text-2xl">
-                            <p className="text-lg font-light">Developer</p>
-                            <Link href={`/developer/${slugify(project.main?.developer_name)}`}>{project.main?.developer_name}</Link>
+                            <p className="text-lg font-light">{mt("developer")}</p>
+                            <Link href={`/developer/${slugify(project.main?.developer_name)}`}>{mt(slugify(project?.main?.developer_name, { delimiter: '_' }))}</Link>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 gap-5">
-                        <button className="bg-ebGreen text-white text-xl rounded px-5 py-2 cursor-pointer border border-bg-ebGreen hover:text-ebGreen hover:bg-ebLightGreen">WhatsApp</button>
-                        <button className="bg-ebGreen text-white text-xl rounded px-5 py-2 cursor-pointer border border-bg-ebGreen hover:text-ebGreen hover:bg-ebLightGreen">Call</button>
+                        <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${fullUrl}`} className="bg-ebGreen text-center text-white text-xl rounded px-5 py-2 cursor-pointer border border-bg-ebGreen hover:text-ebGreen hover:bg-ebLightGreen">{mt("whatsapp")}</Link>
+                        <Link href={`tel:${phoneNumber}`} type="button" className="bg-ebGreen text-center text-white text-xl rounded px-5 py-2 cursor-pointer border border-bg-ebGreen hover:text-ebGreen hover:bg-ebLightGreen">{mt("call")}</Link>
                     </div>
                 </div>
             </div>

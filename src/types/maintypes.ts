@@ -215,6 +215,7 @@ export interface ProjectDetails {
     virtual: string;
     youtube_ar: string;
     ar_project_description: string;
+    ru_project_description: string;
     payment_plans_order: string[];
     payment_plans_year: string[];
     payment_plans_type: string[];

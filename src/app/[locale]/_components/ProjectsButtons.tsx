@@ -24,15 +24,7 @@ export default function ProjectsButtons(props:any) {
     };
     const mt = useTranslations('MainTranslation');
 
-    const unimultitype = project?.property_type1;
-    let typeTitle, locationPlan, floorplans, youtubevid, masterPlan, galleryExt, galleryInt, galleryFac, maintype;
-    if(unimultitype){
-        const jsonObject = JSON.parse(unimultitype);
-        console.log(jsonObject);
-        typeTitle = jsonObject
-            .map((type:any) => mt(`${type}`))
-            .join(', ');
-    }
+    let locationPlan, floorplans, youtubevid, masterPlan, galleryExt, galleryInt, galleryFac;
 
     const [fancyboxRef] = useFancybox({
         // Your custom options
@@ -76,12 +68,6 @@ export default function ProjectsButtons(props:any) {
     {project.media?.images.facilities === 0
         ? galleryFac = ''
         : galleryFac = project.media?.images.facilities;
-    }
-    const storedItem = project.property_type;
-    if (storedItem) {
-        maintype = JSON.parse(storedItem);
-    } else {
-        maintype = '';
     }
     const mainprojecturl =  '/projects/' + slugify(project.main?.city_name) + "/" + slugify(project.main?.community_name) + "/" + slugify(project.main?.subcommunity_name) + "/" + project.main?.project_slug;
 

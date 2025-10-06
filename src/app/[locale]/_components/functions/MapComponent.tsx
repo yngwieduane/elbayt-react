@@ -26,9 +26,9 @@ const MapComponent: React.FC<MapComponentProps> = ({ latitude, longitude, fallba
             <Map
               mapId={'49ae42fed52588c3'}
               mapTypeId='roadmap'
-              style={{width: '100%', height: '500px'}}
+              style={{width: '100%', height: '600px'}}
               defaultCenter={{lat: mainlat, lng: mainlng}}
-              defaultZoom={10}
+              defaultZoom={15}
             >
             <CustomAdvancedMarker realEstateListing={{latitude,longitude,fallbackImage}} />
             </Map>
