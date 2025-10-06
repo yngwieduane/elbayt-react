@@ -1,14 +1,13 @@
 'use client'
 import { useState, useEffect } from "react";
-import CardImage from "./tools/CardImage";
 import { Skeleton } from "./tools/Skeleton";
-import { Communities } from "@/types/maintypes";
+import { Developer } from "@/types/maintypes";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import slugify from "react-slugify";
 
-export default function CommunityCardWithDescription(props:any){
-    const [data, setData] = useState<Communities[]>([]);
+export default function DeveloperCardWithDescription(props:any){
+    const [data, setData] = useState<Developer[]>([]);
     const [isLoading, setLoading] = useState(true);
     const mt = useTranslations('MainTranslation');
     const locale = useLocale();
@@ -19,7 +18,7 @@ export default function CommunityCardWithDescription(props:any){
                 setLoading(true);
 
                 const response = await fetch(
-                    `/api/getcommunities/?id=${props.id}sort=community`
+                    `/api/getdeveloperbyid/?id=${props.id}`
                 );
 
                 if (!response.ok) {
@@ -68,7 +67,7 @@ export default function CommunityCardWithDescription(props:any){
                         }
                         return (
                             <div key={index}>
-                                <h2 className="text-3xl text-center mb-5">{mt("your_ultimate_guide_to")} {mt(slugify(title, { delimiter: '_' }))} : {mt("the_best_real_estate_market_in_egypt")}</h2>
+                                <h2 className="text-3xl text-center mb-5">{mt(slugify(title, { delimiter: '_' }))} {mt("lifestyle")}: {mt("an_insider_s_guide_to_egypt_s_real_estate_developer")}</h2>
                                 <Image src={image} alt={`Image of ${title}`} width={300} height={200} className="ltr:float-right rtl:float-left rounded-2xl bg-gray-50 object-cover h-50 w-92" />
                                 <div dangerouslySetInnerHTML={{ __html: description }} />
                             </div>

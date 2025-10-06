@@ -12,6 +12,8 @@ import SimilarProjects from "@/app/[locale]/_components/SimilarProjects";
 import slugify from "react-slugify";
 import ProjectCardWithParag from "@/app/[locale]/_components/ProjectCardWithParag";
 import ProjectCardWithDescription from "@/app/[locale]/_components/ProjectCardWithDescription";
+import CommunityCardWithDescription from "@/app/[locale]/_components/CommunityCardWithDescription";
+import DeveloperCardWithDescription from "@/app/[locale]/_components/DeveloperCardWithDescription";
 export default function MainContent(props:any) {
     const project = props.data;
     const mt = useTranslations('MainTranslation');
@@ -85,6 +87,12 @@ export default function MainContent(props:any) {
                 </div>
                 <div>
                     <ProjectCardWithDescription results={project}/>
+                </div>
+                <div>
+                    <CommunityCardWithDescription id={project.main?.community_id}/>
+                </div>
+                <div>
+                    <DeveloperCardWithDescription id={project?.main?.developer_id} />
                 </div>
 
             </div>

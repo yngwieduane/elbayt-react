@@ -2,10 +2,9 @@ import { NextRequest } from 'next/server';
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
-    const sort = searchParams.get('sort') || '';
-    const id = searchParams.get('id') || '';
-    const apiurl = `https://admin.elbayt.com/api/getcommunities.php?id=${id}&sort=${sort}`;
-    console.log('Fetching communities data...'+sort);
+    const sort = searchParams.get('id') || '';
+    const apiurl = `https://admin.elbayt.com/api/getdeveloperbyid.php?id=${sort}`;
+    console.log('Fetching getdeveloperbyid data...'+sort);
     const response = await fetch(
         apiurl,
         {
@@ -18,13 +17,13 @@ export async function GET(request: NextRequest) {
     );
 
     if (!response) {
-        const error = new Error("An error occurred while fetching communities");
+        const error = new Error("An error occurred while fetching getdeveloperbyid");
         throw error;
     }
 
-    const communities = await response.json();
+    const getdevelopers = await response.json();
 
-    return new Response(JSON.stringify(communities), {
+    return new Response(JSON.stringify(getdevelopers), {
         headers: { 'Content-Type': 'application/json' },
     });
 }
