@@ -120,13 +120,15 @@ export default function FaqsContent(props:any) {
 
     const targetId = faqs;
     const foundIndex = accordionData.findIndex(item => item.url === targetId);
+    const maintitle = accordionData?.[foundIndex]?.title ?? "Untitled";
+    const maincontent = accordionData?.[foundIndex]?.content ?? "Untitled";
     return (
         <>  
-            <BreadcrumbCustom lastcrumb={accordionData[foundIndex].title}/>
+            <BreadcrumbCustom lastcrumb={maintitle}/>
             <div className="mx-auto container px-6 lg:px-8 mt-5 grid grid-cols-1 gap-4 ">
                 <div className="p-5 m-5">
-                    <h1 className="text-2xl mb-3">{accordionData[foundIndex].title}</h1>
-                    <h2>{accordionData[foundIndex].content}</h2>
+                    <h1 className="text-2xl mb-3">{maintitle}</h1>
+                    <h2>{maincontent}</h2>
                 </div>
                 <div>
                     <MainFacts data={project}/>
