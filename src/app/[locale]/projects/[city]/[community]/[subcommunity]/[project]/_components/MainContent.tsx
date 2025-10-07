@@ -14,6 +14,7 @@ import ProjectCardWithParag from "@/app/[locale]/_components/ProjectCardWithPara
 import ProjectCardWithDescription from "@/app/[locale]/_components/ProjectCardWithDescription";
 import CommunityCardWithDescription from "@/app/[locale]/_components/CommunityCardWithDescription";
 import DeveloperCardWithDescription from "@/app/[locale]/_components/DeveloperCardWithDescription";
+import ProjectFaqs from "./ProjectFaqs";
 export default function MainContent(props:any) {
     const project = props.data;
     const mt = useTranslations('MainTranslation');
@@ -84,6 +85,9 @@ export default function MainContent(props:any) {
                 <div className="my-5" ref={fancyboxRef1}>
                     <h2 className="text-2xl mb-5 text-center">{mt("projects_by")} {mt("projects_by")} {mt(slugify(project?.main?.developer_name, { delimiter: '_' }))} </h2>
                     <SimilarProjects communityid="" developerid={project?.main?.developer_id} />
+                </div>
+                <div>
+                    <ProjectFaqs data={project}/>
                 </div>
                 <div>
                     <ProjectCardWithDescription results={project}/>
