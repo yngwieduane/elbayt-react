@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
     const community = searchParams.get('community') || '';
     const subcommunity = searchParams.get('subcommunity') || '';
     const page = searchParams.get('page') || '';
-    const apiurl = `https://admin.elbayt.com/api/getprojects.php?developerid=${developerid}&city=${city}&community=${community}&subcommunity=${subcommunity}&page=${page}`;
+    const apiurl = `https://admin.elbayt.com/api/getprojectslist.php?developerid=${developerid}&city=${city}&community=${community}&subcommunity=${subcommunity}&page=${page}`;
     console.log('Fetching getproperties data...'+developerid);
     const response = await fetch(
         apiurl,

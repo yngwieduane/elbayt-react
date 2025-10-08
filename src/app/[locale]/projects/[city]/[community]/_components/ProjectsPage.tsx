@@ -42,7 +42,7 @@ export default function ProjectsPage({
             const res = await fetch(`/api/getprojectslist?community=${dataid}&page=${page}`);
             const result = await res.json();
             setAllData(result.result);
-            setTotalPage(Math.ceil(Number(result.total) / 10));
+            setTotalPage(Math.ceil(Number(result.total) / 12));
         } catch (error) {
             console.error("API fetch failed", error);
         } finally {
@@ -61,7 +61,7 @@ export default function ProjectsPage({
         <div className="mx-auto container px-6 lg:px-8 mt-5">
             <h1 className="text-3xl truncate mb-5">{community} {city} Egypt Real Estate</h1>
             <div className="flex justify-between mb-5">
-                <div>Search</div>
+                <div></div>
                 <Pagination totalPages={totalPage} />
             </div>
             <div className="grid grid-cols-4 gap-4">

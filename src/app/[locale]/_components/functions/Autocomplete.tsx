@@ -22,7 +22,7 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
     useEffect(() => {
         const timeout = setTimeout(() => {
             if (query.trim() !== "") {
-                setShowDropdown(true);
+                //setShowDropdown(true);
                 setLoading(true);
                 fetch(`/api/getprojects?query=${query}`)
                 .then(res => res.json())
@@ -34,7 +34,7 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
             } else {
                 setResults([]);
                 setLoading(false);
-                setShowDropdown(false);
+                //setShowDropdown(false);
                 setIDValue(0);
             }
         }, 300);
@@ -47,6 +47,13 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
         setResetStatus('false');
     };
     const handleClick = (e:any) => {
+        setShowDropdown(false);
+    };
+    const handleFocus = (e:any) => {
+        setShowDropdown(true);
+        setQuery('new cairo');
+    };
+    const handleBlur = (e:any) => {
         setShowDropdown(false);
     };
 
@@ -62,6 +69,8 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
                     name="propertyName"
                     placeholder={mt('keyword_search_ex_north_coast_emaar_the_waterway')}
                     onChange={handleInputChange}
+                    onClick={handleFocus}
+                    onBlur={handleBlur}
                     autoComplete="off"
                     className="placeholder:text-sm  col-start-1 row-start-1 block w-full rounded-md bg-gray-50 md:bg-white py-1.5 pr-3 pl-10 text-lg text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:pl-9 placeholder:text-gray-500"
                 />
@@ -71,14 +80,14 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
                 />
             </div>
             {loading && <p className="absolute left-0 right-0 bg-white bg-gray-50 mt-1 z-10 max-h-60 overflow-auto shadow rounded-md">Searching...</p>}
-            {showDropdown && results.length > 0 && (
+            {showDropdown  && (
                 <ul className="absolute left-0 right-0 bg-white bg-gray-50 mt-1 z-10 max-h-60 overflow-auto shadow-xl rounded-md ">
                 {results.map((item, index) => {
                     const url =  '/projects/' + slugify(item.city_name) + "/" + slugify(item.community_name) + "/" + slugify(item.subcommunity_name) + "/" + item.project_slug;
                     return(
                     <li key={index} onClick={handleClick}>
                         <Link href={url} className="p-2 hover:bg-gray-100 cursor-pointer flex gap-2 items-center">
-                            <strong>{item.propertyName}</strong>
+                            <p>{item.propertyName}</p>
                             <span className="text-sm text-gray-500">({item.community_name}, {item.city_name})</span>
                         </Link>
                     </li>
