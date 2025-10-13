@@ -12,6 +12,19 @@ import PopularCommunity from './_components/PopularCommunity';
 export const metadata: Metadata = {
     title: "Best Real Estate Website in Egypt | elbayt.com",
     description: "Find your next residential or commercial property with Egypt’s largest real estate website elbayt.com . Our complete database of real estate listings will make finding your next place easy! | elbayt.com",
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
 };
 const poppins = Poppins({
     subsets: ['latin'],

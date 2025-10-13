@@ -14,10 +14,10 @@ return (
             <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-sm">
                 <div className="flex flex-col gap-5">
                     <div className="flex gap-4 text-xl">
-                        <a href="#" target="_blank"><SiInstagram size={20}/></a>
-                        <a href="#" target="_blank"><SiFacebook size={20}/></a>
-                        <a href="#" target="_blank"><SiX size={20}/></a>
-                        <a href="#" target="_blank"><SiYoutube size={20}/></a>
+                        <a href="https://www.instagram.com/elbaytegypt/#" target="_blank"><SiInstagram size={20}/></a>
+                        <a href="https://www.facebook.com/elbaytegypt" target="_blank"><SiFacebook size={20}/></a>
+                        <a href="https://x.com/elbaytegypt" target="_blank"><SiX size={20}/></a>
+                        <a href="https://www.youtube.com/channel/UCreNuOhoN8OrFt8KqGf49LA" target="_blank"><SiYoutube size={20}/></a>
                     </div>
                     <div className="text-sm space-x-2">
                         <Link href="/about">{mt('about_us')}</Link>

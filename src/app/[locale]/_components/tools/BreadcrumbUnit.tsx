@@ -2,23 +2,46 @@
 
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
+import slugify from 'react-slugify';
+import { useTranslations } from 'next-intl';
 
 const BreadcrumbUnit = () => {
+    const mt = useTranslations('MainTranslation');
     const pathname = usePathname();
     const pathSegments = pathname.split('/').filter((segment) => segment);
     pathSegments.shift();
+
+    const itemListElement = pathSegments.map((segment, index) => {
+        const url = '/' + pathSegments.slice(0, index + 1).join('/');
+        const name = segment;
+        return {
+        '@type': 'ListItem',
+        'position': index + 1,
+        'name': mt(slugify(segment, { delimiter: '_' })),
+        'item': url
+        };
+    });
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        'itemListElement': itemListElement,
+    };
     return (
         <nav className="bg-ebLightGreen py-2 px-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto  max-w-full whitespace-nowrap scrollbar-hide">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <ul className="flex items-center space-x-2 text-gray-500 truncate">
                 <li>
                     <Link href="/" className="hover:text-ebGreen">
-                        Home
+                        {mt('home')}
                     </Link>
                 </li>
                 <li className="flex items-center space-x-2">
                     <span>/</span>
                     <Link href="/units" className="hover:text-blue-600">
-                        Units
+                        {mt('units')}
                     </Link>
                 </li>
                 {pathSegments.slice(1,2).map((segment, index) => {
@@ -29,11 +52,11 @@ const BreadcrumbUnit = () => {
                     <span>/</span>
                     {isLast ? (
                         <span className="text-gray-900 capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
-                        {segment.replaceAll('-', ' ')}
+                        {mt(slugify(segment, { delimiter: '_' }))}
                         </span>
                     ) : (
                         <Link href={href} className="hover:text-ebGreen capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
-                        {segment.replaceAll('-', ' ')}
+                        {mt(slugify(segment, { delimiter: '_' }))}
                         </Link>
                     )}
                     </li>
