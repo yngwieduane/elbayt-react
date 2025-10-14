@@ -4,6 +4,7 @@ import CardImage from "./tools/CardImage";
 import { Skeleton } from "./tools/Skeleton";
 import { Communities } from "@/types/maintypes";
 import { useTranslations } from "next-intl";
+import slugify from "react-slugify";
 
 export default function PopularCommunity(props:any){
     const [data, setData] = useState<Communities[]>([]);
@@ -51,7 +52,7 @@ export default function PopularCommunity(props:any){
                         <>
                             {data.slice(0, 8).map((post:any,index:any) => { 
                                 const title = post.name;
-                                const href = "";
+                                const href = `/projects/${slugify(post.cityname)}/${slugify(post.name)}`;
                                 const image = `https://admin.elbayt.com/files/image/id/${post.document_id}/checksum/${post.checksum}/${post.docuname}`;
                                 return (<li key={index} className="flex-none w-40">
                                     <CardImage key={index} name={title} image={image} href={href}/>
