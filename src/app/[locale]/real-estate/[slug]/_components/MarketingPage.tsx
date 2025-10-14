@@ -8,6 +8,7 @@ import PropertyBox from "./PropertyBox";
 import PropertyBoxWithParag from "./PropertyBoxWithParag";
 import Image from "next/image";
 import PropertyTable from "./PropertyTable";
+import BreadcrumbCustom from "@/app/[locale]/_components/tools/BreadcrumbCustom";
 
 export default function MarketingPage({
     slug
@@ -43,7 +44,7 @@ export default function MarketingPage({
         fetchData();
     }, [slug]);
     return (
-        <div className="grid grid-cols-1 gap-5">
+        <div className=" ">
             {isLoading ? (
                 <>
                     <Skeleton/>
@@ -84,25 +85,30 @@ export default function MarketingPage({
                             HOdate = false;
                             }
                             return (
-                                <article className="" key={index}>
-                                    <h1 className='text-center text-3xl my-5'>{title}</h1>
-                                    <Image src={image} alt={title} width={300} height={200} className="ltr:float-right rtl:float-left rounded-2xl bg-gray-50 object-cover" />
-                                    <p className="whitespace-break-spaces">{description}</p>
-                                    {youtube !== '' ? (
-                                    <div className="my-5">
-                                        <iframe src={youtube} className="w-full h-[200px] md:h-[700px]" />
+                                <div key={index}>
+                                    <BreadcrumbCustom lastcrumb={title}/>
+                                    <div className="mx-auto container px-6 lg:px-8 mt-5 grid grid-cols-1 gap-4">
+                                        <article >
+                                            <h1 className='text-center text-3xl my-5'>{title}</h1>
+                                            <Image src={image} alt={title} width={300} height={200} className="ltr:float-right rtl:float-left rounded-2xl bg-gray-50 object-cover" />
+                                            <p className="whitespace-break-spaces">{description}</p>
+                                            {youtube !== '' ? (
+                                            <div className="my-5">
+                                                <iframe src={youtube} className="w-full h-[200px] md:h-[700px]" />
+                                            </div>
+                                            ) : ("")}
+                                            <div className="my-10 py-10">
+                                                <PropertyBox property={post.property_id} />
+                                            </div>
+                                            <div className="my-10 py-10">
+                                                <PropertyBoxWithParag property={post.property_id} />
+                                            </div>
+                                            <div className="my-10 py-10">
+                                                <PropertyTable property={post.property_id} />
+                                            </div>
+                                        </article>
                                     </div>
-                                    ) : ("")}
-                                    <div className="my-10 py-10">
-                                        <PropertyBox property={post.property_id} />
-                                    </div>
-                                    <div className="my-10 py-10">
-                                        <PropertyBoxWithParag property={post.property_id} />
-                                    </div>
-                                    <div className="my-10 py-10">
-                                        <PropertyTable property={post.property_id} />
-                                    </div>
-                                </article>
+                                </div>
                             )
                         })}
                     </>
